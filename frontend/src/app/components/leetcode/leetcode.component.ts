@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LeetcodeService } from '../../services/leetcode.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-leetcode',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './leetcode.component.html',
   styleUrl: './leetcode.component.scss',
 })
