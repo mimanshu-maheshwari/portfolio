@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { LeetcodeService } from '../../services/leetcode.service';
 import { CommonModule } from '@angular/common';
+import { MatchedUser } from '../../models/leetcode-user-profile.model';
+// import { CalendarHeatmapModule } from 'ng-calendar-heatmap';
 
 @Component({
   selector: 'app-leetcode',
@@ -8,9 +10,11 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './leetcode.component.html',
   styleUrl: './leetcode.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class LeetcodeComponent implements OnInit {
-  profile!: any;
+  matchedUser!: MatchedUser;
+  calendarData!: any;
 
   constructor(private leetcodeService: LeetcodeService) {}
 
@@ -18,7 +22,9 @@ export class LeetcodeComponent implements OnInit {
     this.leetcodeService
       .getProfile('mimanshu-maheshwari')
       .subscribe(({ data, loading }) => {
-        this.profile = data;
+        this.matchedUser = data.matchedUser as MatchedUser;
+        this.calendarData = this.matchedUser.submissionCalendar;
+        console.log(this.calendarData);
       });
   }
 }

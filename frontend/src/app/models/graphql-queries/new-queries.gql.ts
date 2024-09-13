@@ -68,7 +68,7 @@ export const SELECT_QUESTION = gql`
 `;
 
 // queries.ts
-export const dailyQeustion = `
+export const DAILY_QUESTION = `
 query getDailyProblem {
   activeDailyCodingChallengeQuestion {
       date
@@ -139,7 +139,7 @@ query getDailyProblem {
 }
 `;
 
-export const questionOfTodayQuery = `
+export const QUESTION_OF_TODAY_QUERY = `
   query questionOfToday {
     activeDailyCodingChallengeQuestion {
       date
@@ -167,7 +167,7 @@ export const questionOfTodayQuery = `
   }
 `;
 
-export const skillStatsQuery = `
+export const SKILL_STATS_QUERY = `
     query skillStats($username: String!) {
       matchedUser(username: $username) {
         tagProblemCounts {
@@ -192,7 +192,7 @@ export const skillStatsQuery = `
 `;
 
 // queries.ts
-export const getUserProfileQuery = `
+export const GET_USER_PROFILE_QUERY = `
   query getUserProfile($username: String!) {
     allQuestionsCount {
       difficulty
@@ -249,7 +249,7 @@ export const getUserProfileQuery = `
 `;
 
 // queries.ts
-export const officialSolutionQuery = `
+export const OFFICIAL_SOLUTION_QUERY = `
     query OfficialSolution($titleSlug: String!) {
       question(titleSlug: $titleSlug) {
         solution {
@@ -298,7 +298,7 @@ export const officialSolutionQuery = `
 `;
 
 // queries.ts
-export const userProfileCalendarQuery = `
+export const USER_PROFILE_CALENDAR_QUERY = `
     query UserProfileCalendar($username: String!, $year: Int!) {
       matchedUser(username: $username) {
         userCalendar(year: $year) {
@@ -319,7 +319,7 @@ export const userProfileCalendarQuery = `
 `;
 
 // queries.ts
-export const userProfileUserQuestionProgressV2Query = `
+export const USER_PROFILE_USER_QUESTION_PROGRESS_V2_QUERY = `
     query userProfileUserQuestionProgressV2($userSlug: String!) {
         userProfileUserQuestionProgressV2(userSlug: $userSlug) {
             numAcceptedQuestions {
@@ -342,7 +342,7 @@ export const userProfileUserQuestionProgressV2Query = `
     }
 `;
 
-export const userContestRankingInfoQuery = `
+export const USER_CONTEST_RANKING_INFO_QUERY = `
     query userContestRankingInfo($username: String!) {
         userContestRanking(username: $username) {
             attendedContestsCount
@@ -370,7 +370,7 @@ export const userContestRankingInfoQuery = `
     }
 `;
 
-export const discussCommentsQuery = `
+export const DISCUSS_COMMENTS_QUERY = `
     query discussComments($topicId: Int!, $orderBy: String = "newest_to_oldest", $pageNo: Int = 1, $numPerPage: Int = 10) {
         topicComments(topicId: $topicId, orderBy: $orderBy, pageNo: $pageNo, numPerPage: $numPerPage) {
             data {
@@ -426,7 +426,7 @@ export const discussCommentsQuery = `
     }
 `;
 
-export const discussTopicQuery = `
+export const DISCUSS_TOPIC_QUERY = `
     query DiscussTopic($topicId: Int!) {
         topic(id: $topicId) {
             id
