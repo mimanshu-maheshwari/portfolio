@@ -1,13 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" [ngClass]="{ 'dark-mode': isDarkMode }">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" [ngClass]="{ 'dark-mode': isDarkMode }">
     <div class="container-fluid">
         <!-- Brand name or logo -->
-        <a class="navbar-brand profile-picture" href="#">
-            <img src="image/profie_image.jpg" alt="Logo" class="brand-logo" />
-        </a>
-        <span>
+        <a class="navbar-brand " href="#">
+            <!-- <img src="image/profie_image.jpg" alt="Logo" class="brand-logo" /> -->
             Mimanshu Maheshwari
-        </span>
-        <!-- Hamburger Menu for small screens -->
+        </a>
+
+        <!-- Hamburger Menu for small screens
         <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" aria-controls="navbarNav"
             aria-expanded="!isCollapsed" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -16,37 +15,37 @@
         <!-- Navbar links, collapses on smaller screens -->
         <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" mat-button aria-current="page" routerLinkActive="router-link-active"
+                <!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLinkActive="router-link-active"
                         routerLink="#home" href="#home">Home</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="#about" href="#about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" mat-button routerLink="#about" href="#about">About</a>
+                    <a class="nav-link" routerLink="#projects" href="#projects">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" mat-button routerLink="#projects" href="#projects">Projects</a>
+                    <a class="nav-link" routerLink="#leetcode" href="#leetcode">Leetcode</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" mat-button routerLink="#contact" href="#contact">Contact</a>
+                    <a class="nav-link" routerLink="#publications" href="#publications">Publications</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" mat-button routerLink="#leetcode" href="#leetcode">Leetcode</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" mat-button routerLink="#publications" href="#publications">Publications</a>
+                    <a class="nav-link" routerLink="#contact" href="#contact">Contact</a>
                 </li>
             </ul>
+        </div>
 
-            <!-- Right side: Theme toggle and social links -->
-            <div class="d-flex">
-                <button class="btn theme-toggle btn-outline-light text-dark btn-light" (click)="toggleTheme()">
-                    <i class="bi" [ngClass]="isDarkMode ? 'bi-sun-fill' : 'bi-moon-fill'"></i>
-                </button>
-                <!-- <a href="https://github.com/mimanshu-maheshwari" target="_blank"
+        <!-- Right side: Theme toggle and social links -->
+        <div class="d-flex align-items-center ms-auto">
+            <mat-slide-toggle [checked]="isDarkMode" labelPosition="before" (change)="toggleTheme()" #darkModeSwitch>
+                <mat-icon>{{ isDarkMode ? 'brightness_2' : 'wb_sunny' }}</mat-icon>
+            </mat-slide-toggle>
+            <!-- <a href="https://github.com/mimanshu-maheshwari" target="_blank"
                     class="btn btn-outline-light github-btn btn-light">
                     <i class="bi bi-github"></i> GitHub
                 </a> -->
-            </div>
         </div>
     </div>
 </nav>

@@ -13,3 +13,9 @@
     transform: translate(0px, 17px) scale(1.3);
   }
 }
+
+.mdc-switch__track::before,
+.mdc-switch__track::after {
+  top: 5px !important;
+  height: 50% !important;
+}

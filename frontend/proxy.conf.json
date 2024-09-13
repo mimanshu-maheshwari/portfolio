@@ -1,0 +1,11 @@
+{
+  "/leetcode": {
+    "target": "https://leetcode.com/graphql",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/leetcode": ""
+    }
+  }
+}
