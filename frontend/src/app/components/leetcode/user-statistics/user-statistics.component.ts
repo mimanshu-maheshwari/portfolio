@@ -13,7 +13,9 @@ export class UserStatisticsComponent implements OnChanges {
   @ViewChild('chart', { static: true }) chartContainer!: ElementRef;
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.renderChart();
+    if (this.stats) {
+      this.renderChart();
+    }
   }
 
   renderChart(): void {

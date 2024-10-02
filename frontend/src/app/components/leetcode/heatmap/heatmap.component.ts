@@ -20,7 +20,7 @@ export class HeatmapComponent implements OnChanges {
 
   renderHeatmap(): void {
     const data = this.processData();
-    console.debug('submission data', data);
+    // console.debug('submission data', data);
     // Similar heatmap rendering logic as before
     const container = this.heatmapContainer.nativeElement;
 
@@ -44,11 +44,11 @@ export class HeatmapComponent implements OnChanges {
     // Set the start and end dates for the heatmap (one year range)
     const startDate = d3.min(Object.keys(data).map((d) => new Date(d))) as Date;
     const endDate = d3.max(Object.keys(data).map((d) => new Date(d))) as Date;
-    console.debug('dates: ', startDate, endDate);
+    // console.debug('dates: ', startDate, endDate);
 
     // Create a range of days
     const days = d3.timeDays(new Date(startDate.getFullYear(), 0, 1), new Date(endDate.getFullYear() + 1, 0, 1));
-    console.debug('days: ', days);
+    // console.debug('days: ', days);
     // Calculate the day of week and week number
     const day = (d: Date) => d.getDay();
     const week = (d: Date) => d3.timeWeek.count(d3.timeYear(d), d);

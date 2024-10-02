@@ -1,1 +1,16 @@
-<p>user-profile works!</p>
+@if (profile) {
+<div class="profile-container">
+    @if (profile.userAvatar) {
+    <img [src]="profile.userAvatar" alt="User Avatar" class="profile-avatar">
+    }
+    @if (profile.realName) {
+    <h2>{{ profile.realName }}</h2>
+    }
+    @if (profile.ranking) {
+    <p>Ranking: {{ profile.ranking }}</p>
+    }
+    @if (profile.countryName) {
+    <p>Country: {{ profile.countryName }}</p>
+    }
+</div>
+}
