@@ -1,3 +1,5 @@
 <p>leetcode works!</p>
-<ng-calendar-heatmap [data]="calendarData"></ng-calendar-heatmap> <!--[options]="calendarOptions"-->
-<p>{{matchedUser | json}}</p>
+<p>{{ stats | json}}</p>
+<app-heatmap [submissionCalendar]="calendarData" />
+<app-user-profile />
+<app-user-statistics />
