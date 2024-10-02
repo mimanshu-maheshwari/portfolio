@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" [ngClass]="{ 'dark-mode': isDarkMode }">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav" [ngClass]="{ 'dark-mode': isDarkMode }">
     <div class="container-fluid">
         <!-- Brand name or logo -->
-        <a class="navbar-brand " href="#">
+        <a class="navbar-brand " href="">
             <!-- <img src="image/profie_image.jpg" alt="Logo" class="brand-logo" /> -->
-            Mimanshu Maheshwari
+            <span title="Avid Vivarta">AV</span>
         </a>
 
         <!-- Hamburger Menu for small screens -->
@@ -39,9 +39,9 @@
 
         <!-- Right side: Theme toggle and social links -->
         <div class="d-flex align-items-center ms-auto">
-            <mat-slide-toggle [checked]="isDarkMode" labelPosition="before" (change)="toggleTheme()" #darkModeSwitch>
+            <!-- <mat-slide-toggle [checked]="isDarkMode" labelPosition="before" (change)="toggleTheme()" #darkModeSwitch>
                 <mat-icon>{{ isDarkMode ? 'brightness_2' : 'wb_sunny' }}</mat-icon>
-            </mat-slide-toggle>
+            </mat-slide-toggle> -->
             <!-- <a href="https://github.com/mimanshu-maheshwari" target="_blank"
                     class="btn btn-outline-light github-btn btn-light">
                     <i class="bi bi-github"></i> GitHub

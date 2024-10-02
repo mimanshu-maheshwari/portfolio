@@ -19,12 +19,10 @@ export class LeetcodeComponent implements OnInit {
   constructor(private leetcodeService: LeetcodeService) {}
 
   ngOnInit(): void {
-    this.leetcodeService
-      .getProfile('mimanshu-maheshwari')
-      .subscribe(({ data, loading }) => {
-        this.matchedUser = data.matchedUser as MatchedUser;
-        this.calendarData = this.matchedUser.submissionCalendar;
-        console.log(this.calendarData);
-      });
+    this.leetcodeService.getProfile('mimanshu-maheshwari').subscribe(({ data, loading }) => {
+      this.matchedUser = data.matchedUser as MatchedUser;
+      this.calendarData = this.matchedUser.submissionCalendar;
+      // console.log(this.calendarData);
+    });
   }
 }
