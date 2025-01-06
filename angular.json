@@ -111,7 +111,8 @@
           "options": {
             "baseHref": "/portfolio",
             "name": "Mimanshu Maheshwari",
-            "repo": "https://github.com/mimanshu-maheshwari/portfolio"
+            "repo": "https://github.com/mimanshu-maheshwari/portfolio",
+            "message": "What could possibly go wrong?"
           }
         }
       }
