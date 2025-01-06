@@ -1,10 +1,15 @@
 .profile-picture {
   margin-top: 0; // 20px;
-  width: 7em; /* Set the width of the profile picture */
-  height: 7em; /* Set the height of the profile picture */
-  border-radius: 50%; /* Make the image circular */
-  overflow: hidden; /* Hide the overflow to ensure the image is cropped in a circular shape */
-  border: 3px solid #007bff; /* Optional: Add a border to match the WhatsApp icon style */
+  width: 7em;
+  /* Set the width of the profile picture */
+  height: 7em;
+  /* Set the height of the profile picture */
+  border-radius: 50%;
+  /* Make the image circular */
+  overflow: hidden;
+  /* Hide the overflow to ensure the image is cropped in a circular shape */
+  border: 3px solid #007bff;
+  /* Optional: Add a border to match the WhatsApp icon style */
 
   img {
     width: 100%;

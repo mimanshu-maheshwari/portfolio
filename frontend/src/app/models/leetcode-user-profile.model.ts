@@ -14,25 +14,25 @@ export interface UserDataProfile {
 
 export interface MatchedUser {
   activeBadge: Badge;
-  badges: Badge[];
+  badges: Array<Badge>;
   githubUrl: string;
   linkedinUrl?: string;
   profile: UserDataProfile;
-  upcomingBadges: Badge[];
+  upcomingBadges: Array<Badge>;
   username: string;
   twitterUrl?: string;
   submissionCalendar: { [key: string]: number };
   submitStats: {
-    totalSubmissionNum: {
+    totalSubmissionNum: Array<{
       difficulty: Difficulty;
       count: number;
       submissions: number;
-    }[];
-    acSubmissionNum: {
+    }>;
+    acSubmissionNum: Array<{
       difficulty: Difficulty;
       count: number;
       submissions: number;
-    }[];
+    }>;
     count: number;
   };
 }
@@ -46,7 +46,7 @@ export interface UserData {
     totalParticipants: number;
     topPercentage: number;
   };
-  userContestRankingHistory: {
+  userContestRankingHistory: Array<{
     attended: boolean;
     rating: number;
     ranking: number;
@@ -58,10 +58,10 @@ export interface UserData {
       title: string;
       startTime: string;
     };
-  }[];
+  }>;
   matchedUser: MatchedUser;
-  recentAcSubmissionList: {}[];
-  recentSubmissionList: Submission[];
+  recentAcSubmissionList: Array<{}>;
+  recentSubmissionList: Array<Submission>;
 }
 
 export interface Badge {
@@ -96,7 +96,7 @@ export enum Difficulty {
 export interface ProblemSetQuestionListData {
   problemsetQuestionList: {
     total: number;
-    questions: {}[];
+    questions: Array<{}>;
   };
 }
 
@@ -110,20 +110,20 @@ export interface Submission {
 
 export interface Question {
   content: string;
-  companyTagStats: string[];
+  companyTagStats: Array<string>;
   difficulty: Difficulty;
   dislikes: number;
-  exampleTestcases: {}[];
-  hints: {}[];
+  exampleTestcases: Array<{}>;
+  hints: Array<{}>;
   isPaidOnly: boolean;
   likes: number;
   questionId: number;
   questionFrontendId: number;
   solution: string;
-  similarQuestions: {}[];
+  similarQuestions: Array<{}>;
   title: string;
   titleSlug: string;
-  topicTags: string[];
+  topicTags: Array<string>;
 }
 
 export interface DailyProblemData {
@@ -140,7 +140,7 @@ export interface SelectProblemData {
 
 export interface TrendingDiscussionObject {
   data: {
-    cachedTrendingCategoryTopics: {
+    cachedTrendingCategoryTopics: Array<{
       id: number;
       title: string;
       post: {
@@ -155,6 +155,12 @@ export interface TrendingDiscussionObject {
           };
         };
       };
-    }[];
+    }>;
   };
+}
+export interface Publication {
+  link: string;
+  heading: string;
+  detail: string;
+  img: string;
 }

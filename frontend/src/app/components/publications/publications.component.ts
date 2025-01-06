@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
-import { Publication } from '../../models/publication.model';
+import { Publication } from '../../models/leetcode-user-profile.model';
 
 @Component({
   selector: 'app-publications',
