@@ -6,4 +6,5 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   // for any unknown path redirect to home page
   { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
 ];
