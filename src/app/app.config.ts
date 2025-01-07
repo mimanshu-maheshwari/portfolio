@@ -16,6 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
     graphqlProvider,
-    { provide: APP_BASE_HREF, useValue: '/portfolio' },
+    { provide: APP_BASE_HREF, useValue: '/portfolio' }, provideAnimationsAsync(),
   ],
 };
