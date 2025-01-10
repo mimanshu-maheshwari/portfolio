@@ -12,11 +12,11 @@ export class AppComponent implements OnInit {
   title = 'portfolio';
 
   links: Array<HeaderLink> = [
-    { title: 'About', link: './', fragment: 'about', icon: 'account_circle' },
-    { title: 'Profiles', link: './', fragment: 'profiles', icon: 'code_blocks' },
-    { title: 'Projects', link: './', fragment: 'projects', icon: 'folder_code' },
-    { title: 'Publications', link: './', fragment: 'publications', icon: 'article' },
-    { title: 'Contact', link: './', fragment: 'contact', icon: 'contact_page' },
+    { title: 'About', link: './about', fragment: '', icon: 'account_circle' },
+    { title: 'Profiles', link: './profiles', fragment: '', icon: 'code_blocks' },
+    { title: 'Projects', link: './projects', fragment: '', icon: 'folder_code' },
+    { title: 'Publications', link: './publications', fragment: '', icon: 'article' },
+    { title: 'Contact', link: './contact', fragment: '', icon: 'contact_page' },
   ];
 
   route = inject(ActivatedRoute);

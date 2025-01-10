@@ -1,5 +1,3 @@
-import { APP_BASE_HREF } from '@angular/common';
-
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
