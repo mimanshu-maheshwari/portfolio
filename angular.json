@@ -78,7 +78,6 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "servePath": "/portfolio",
             "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
