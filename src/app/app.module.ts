@@ -63,7 +63,7 @@ import { UserStatisticsComponent } from './components/profiles/leetcode/user-sta
     provideClientHydration(withEventReplay()),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
-    { provide: APP_BASE_HREF, useValue: '/portfolio' },
+    // { provide: APP_BASE_HREF, useValue: '/portfolio' },
     provideApollo(() => {
       const httpLink = inject(HttpLink);
       return {
