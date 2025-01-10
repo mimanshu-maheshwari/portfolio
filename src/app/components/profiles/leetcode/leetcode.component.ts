@@ -1,22 +1,10 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { LeetcodeService } from '../../../services/leetcode.service';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { MatchedUser } from '../../../models/leetcode-user-profile.model';
-import { UserStatisticsComponent } from './user-statistics/user-statistics.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { HeatmapComponent } from './heatmap/heatmap.component';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { LeetcodeService } from '../../../services/leetcode.service';
 
 @Component({
   selector: 'app-leetcode',
-  standalone: true,
-  imports: [
-    CommonModule,
-    UserStatisticsComponent,
-    UserProfileComponent,
-    HeatmapComponent,
-    NgbCarouselModule,
-  ],
+  standalone: false,
   templateUrl: './leetcode.component.html',
   styleUrl: './leetcode.component.scss',
 })

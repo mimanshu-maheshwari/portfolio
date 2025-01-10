@@ -27,7 +27,10 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { PublicationsComponent } from './components/publications/publications.component';
 import { MaterialModule } from './modules/material.module';
 import { HomeComponent } from './components/home/home.component';
-import { provideRouter } from '@angular/router';
+import { LeetcodeComponent } from './components/profiles/leetcode/leetcode.component';
+import { HeatmapComponent } from './components/profiles/leetcode/heatmap/heatmap.component';
+import { UserProfileComponent } from './components/profiles/leetcode/user-profile/user-profile.component';
+import { UserStatisticsComponent } from './components/profiles/leetcode/user-statistics/user-statistics.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,10 @@ import { provideRouter } from '@angular/router';
     ProfilesComponent,
     SidenavListComponent,
     HomeComponent,
+    LeetcodeComponent,
+    UserStatisticsComponent,
+    UserProfileComponent,
+    HeatmapComponent,
   ],
   imports: [
     BrowserModule,

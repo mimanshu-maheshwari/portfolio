@@ -3,8 +3,7 @@ import * as d3 from 'd3';
 
 @Component({
   selector: 'app-heatmap',
-  standalone: true,
-  imports: [],
+  standalone: false,
   templateUrl: './heatmap.component.html',
   styleUrl: './heatmap.component.scss',
 })

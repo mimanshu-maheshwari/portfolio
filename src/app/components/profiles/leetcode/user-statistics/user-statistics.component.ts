@@ -3,8 +3,7 @@ import * as d3 from 'd3';
 
 @Component({
   selector: 'app-user-statistics',
-  standalone: true,
-  imports: [],
+  standalone: false,
   templateUrl: './user-statistics.component.html',
   styleUrl: './user-statistics.component.scss',
 })
