@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  isDarkTheme = false;
   @Input() links!: Array<HeaderLink>;
 
   @Output('sidenav-toggle') sidenavToggle: EventEmitter<never> = new EventEmitter<never>();
@@ -19,4 +20,9 @@ export class HeaderComponent {
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
   };
+
+  toggleTheme(): void {
+    this.isDarkTheme = !this.isDarkTheme;
+    // Add logic to switch the theme (e.g., toggle CSS classes or use Angular Material's theming).
+  }
 }
