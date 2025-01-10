@@ -31,6 +31,7 @@ import { LeetcodeComponent } from './components/profiles/leetcode/leetcode.compo
 import { HeatmapComponent } from './components/profiles/leetcode/heatmap/heatmap.component';
 import { UserProfileComponent } from './components/profiles/leetcode/user-profile/user-profile.component';
 import { UserStatisticsComponent } from './components/profiles/leetcode/user-statistics/user-statistics.component';
+import { ThemeService } from './services/theme.service';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { UserStatisticsComponent } from './components/profiles/leetcode/user-sta
         cache: new InMemoryCache(),
       };
     }),
+    ThemeService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

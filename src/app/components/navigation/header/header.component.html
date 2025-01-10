@@ -18,9 +18,9 @@
     </ul>
   </div>
   <div class="ms-auto">
-    <mat-slide-toggle (change)="toggleTheme()">
-      <mat-icon *ngIf="isDarkTheme">nights_stay</mat-icon>
-      <mat-icon *ngIf="!isDarkTheme">wb_sunny</mat-icon>
+    <mat-slide-toggle (change)="themeService.toggleTheme()" [checked]="themeService.isDarkTheme">
+      <mat-icon *ngIf="themeService.isDarkTheme">nights_stay</mat-icon>
+      <mat-icon *ngIf="!themeService.isDarkTheme">wb_sunny</mat-icon>
     </mat-slide-toggle>
   </div>
 </mat-toolbar>

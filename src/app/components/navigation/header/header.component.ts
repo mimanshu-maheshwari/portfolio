@@ -1,6 +1,7 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, inject } from '@angular/core';
 import { HeaderLink } from '../../../models/header-link.model';
 import { ActivatedRoute } from '@angular/router';
+import { ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -10,19 +11,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  isDarkTheme = false;
   @Input() links!: Array<HeaderLink>;
 
   @Output('sidenav-toggle') sidenavToggle: EventEmitter<never> = new EventEmitter<never>();
+  route = inject(ActivatedRoute);
+  themeService = inject(ThemeService);
 
-  constructor(public route: ActivatedRoute) {}
+  constructor() {}
 
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
   };
-
-  toggleTheme(): void {
-    this.isDarkTheme = !this.isDarkTheme;
-    // Add logic to switch the theme (e.g., toggle CSS classes or use Angular Material's theming).
-  }
 }

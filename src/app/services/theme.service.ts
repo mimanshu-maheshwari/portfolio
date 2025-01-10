@@ -4,16 +4,30 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ThemeService {
-  private isDarkTheme: boolean = false;
+  private darkTheme: boolean = false;
 
-  toggleTheme() {
-    this.isDarkTheme = !this.isDarkTheme;
-    const theme = this.isDarkTheme ? 'dark-theme' : 'light-theme';
-    document.body.classList.toggle('dark-theme', this.isDarkTheme);
-    document.body.classList.toggle('light-theme', !this.isDarkTheme);
+  constructor() {
+    this.darkTheme = true;
+    this.applyTheme();
   }
 
-  get isDark(): boolean {
-    return this.isDarkTheme;
+  toggleTheme(): void {
+    this.darkTheme = !this.darkTheme;
+    this.applyTheme();
+  }
+
+  get isDarkTheme(): boolean {
+    return this.darkTheme;
+  }
+
+  private applyTheme(): void {
+    // const body = document.body;
+    // if (this.darkTheme) {
+    //   body.classList.add('dark-theme');
+    //   body.classList.remove('light-theme');
+    // } else {
+    //   body.classList.add('light-theme');
+    //   body.classList.remove('dark-theme');
+    // }
   }
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HeaderLink } from './models/header-link.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { HeaderLink } from './models/header-link.model';
   standalone: false,
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'portfolio';
 
   links: Array<HeaderLink> = [
@@ -17,4 +18,18 @@ export class AppComponent {
     { title: 'Publications', link: './', fragment: 'publications', icon: 'article' },
     { title: 'Contact', link: './', fragment: 'contact', icon: 'contact_page' },
   ];
+
+  route = inject(ActivatedRoute);
+  router = inject(Router);
+
+  ngOnInit(): void {
+    this.route.fragment.subscribe({
+      next: (fragment) => {
+        if (fragment) {
+          console.log(fragment);
+          this.router.navigate(['./'], { fragment });
+        }
+      },
+    });
+  }
 }
