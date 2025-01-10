@@ -5,7 +5,7 @@
     </button>
   </div>
   <div class="ms-auto d-none d-sm-none d-lg-flex d-md-flex d-xl-flex d-xxl-flex">
-    <ul ngbNav [activeId]="route.fragment | async" fxLayout fxLayoutGap="20px" class="navigation-items nav-tabs">
+    <ul ngbNav [activeId]="route.fragment | async" class="navigation-items nav-tabs">
       @for (link of links; track link) {
       <li class="text-center nav-item" [ngbNavItem]="link.fragment">
         <a class="d-flex align-items-center gap-2 nav-link" ngbNavLink [routerLink]="link.link"
