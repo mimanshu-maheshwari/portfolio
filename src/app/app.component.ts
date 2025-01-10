@@ -13,8 +13,8 @@ export class AppComponent {
   links: Array<HeaderLink> = [
     { title: 'About', link: './', fragment: 'about', icon: 'account_circle' },
     { title: 'Profiles', link: './', fragment: 'profiles', icon: 'code_blocks' },
-    { title: 'Publications', link: './', fragment: 'publications', icon: 'article' },
     { title: 'Projects', link: './', fragment: 'projects', icon: 'folder_code' },
+    { title: 'Publications', link: './', fragment: 'publications', icon: 'article' },
     { title: 'Contact', link: './', fragment: 'contact', icon: 'contact_page' },
   ];
 }
