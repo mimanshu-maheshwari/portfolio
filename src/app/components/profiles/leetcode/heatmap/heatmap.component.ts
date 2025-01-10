@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
@@ -47,7 +47,10 @@ export class HeatmapComponent implements OnChanges {
     // console.debug('dates: ', startDate, endDate);
 
     // Create a range of days
-    const days = d3.timeDays(new Date(startDate.getFullYear(), 0, 1), new Date(endDate.getFullYear() + 1, 0, 1));
+    const days = d3.timeDays(
+      new Date(startDate.getFullYear(), 0, 1),
+      new Date(endDate.getFullYear() + 1, 0, 1),
+    );
     // console.debug('days: ', days);
     // Calculate the day of week and week number
     const day = (d: Date) => d.getDay();
@@ -70,7 +73,12 @@ export class HeatmapComponent implements OnChanges {
     // Add month outlines
     svg
       .selectAll('.month')
-      .data(d3.timeMonths(new Date(startDate.getFullYear(), 0, 1), new Date(endDate.getFullYear() + 1, 0, 1)))
+      .data(
+        d3.timeMonths(
+          new Date(startDate.getFullYear(), 0, 1),
+          new Date(endDate.getFullYear() + 1, 0, 1),
+        ),
+      )
       .enter()
       .append('path')
       .attr('class', 'month')

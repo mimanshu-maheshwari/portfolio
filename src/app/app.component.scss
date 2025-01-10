@@ -1,3 +1,13 @@
-.header {
-    position: sticky;
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  height: 100%;
+}
+
+mat-sidnav {
+  width: 250px;
+}
+
+main {
+  padding: 10px
 }

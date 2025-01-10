@@ -1,0 +1,8 @@
+a {
+  text-decoration: none;
+  color: var(--mat-toolbar-container-text-color, var(--mat-sys-on-surface));
+}
+
+a:hover {
+  color: var(--mat-sys-on-primary);
+}

@@ -1,4 +1,12 @@
-<div class="container-fluid" data-bs-spy="scroll" data-bs-target="#nav" data-bs-offset="0">
-    <app-header class="sticky-top" />
-    <router-outlet />
-</div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation">
+    <app-sidenav-list [links]="links" (sidenav-close)="sidenav.close()" />
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-header [links]="links" (sidenav-toggle)="sidenav.toggle()" />
+    <main>
+      <router-outlet />
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

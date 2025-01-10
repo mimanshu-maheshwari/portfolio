@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { Publication } from '../../models/leetcode-user-profile.model';
 
 @Component({
   selector: 'app-publications',
-  standalone: true,
-  imports: [NgbCarouselModule],
+  standalone: false,
+
   templateUrl: './publications.component.html',
   styleUrl: './publications.component.scss',
 })

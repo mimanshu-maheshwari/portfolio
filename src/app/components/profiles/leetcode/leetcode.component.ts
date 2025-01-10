@@ -1,7 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { LeetcodeService } from '../../services/leetcode.service';
+import { LeetcodeService } from '../../../services/leetcode.service';
 import { CommonModule } from '@angular/common';
-import { MatchedUser } from '../../models/leetcode-user-profile.model';
+import { MatchedUser } from '../../../models/leetcode-user-profile.model';
 import { UserStatisticsComponent } from './user-statistics/user-statistics.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HeatmapComponent } from './heatmap/heatmap.component';
@@ -10,7 +10,13 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-leetcode',
   standalone: true,
-  imports: [CommonModule, UserStatisticsComponent, UserProfileComponent, HeatmapComponent, NgbCarouselModule],
+  imports: [
+    CommonModule,
+    UserStatisticsComponent,
+    UserProfileComponent,
+    HeatmapComponent,
+    NgbCarouselModule,
+  ],
   templateUrl: './leetcode.component.html',
   styleUrl: './leetcode.component.scss',
 })

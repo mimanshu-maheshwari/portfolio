@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ElementRef, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import * as d3 from 'd3';
 
 @Component({
@@ -20,7 +20,11 @@ export class UserStatisticsComponent implements OnChanges {
 
   renderChart(): void {
     const data = this.stats.totalSubmissionNum;
-    const svg = d3.select(this.chartContainer.nativeElement).append('svg').attr('width', 600).attr('height', 300);
+    const svg = d3
+      .select(this.chartContainer.nativeElement)
+      .append('svg')
+      .attr('width', 600)
+      .attr('height', 300);
 
     const margin = { top: 20, right: 20, bottom: 50, left: 50 };
     const width = +svg.attr('width') - margin.left - margin.right;
@@ -34,7 +38,11 @@ export class UserStatisticsComponent implements OnChanges {
     // y.domain([0, d3.max(data, (d: any) => d.submissions) || 0]);
     y.domain([0, d3.max(data as number[], (d: any) => d.submissions) || 0]);
 
-    chart.append('g').attr('class', 'axis axis--x').attr('transform', `translate(0,${height})`).call(d3.axisBottom(x));
+    chart
+      .append('g')
+      .attr('class', 'axis axis--x')
+      .attr('transform', `translate(0,${height})`)
+      .call(d3.axisBottom(x));
 
     chart.append('g').attr('class', 'axis axis--y').call(d3.axisLeft(y).ticks(10));
 
