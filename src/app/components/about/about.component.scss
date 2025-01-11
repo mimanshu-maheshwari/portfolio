@@ -27,3 +27,43 @@ div.name-wrapper {
     justify-content: center;
     align-items: center;
 }
+
+// .detail-card {
+//     height: 80vh;
+// }
+
+// .name-card {
+//     height: 80vh;
+// }
+
+.name-header-image {
+    // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-image: url('/image/profile_image2.jpg');
+    background-size: cover;
+}
+
+.detail-content {
+    font-size: x-large;
+}
+
+.detail-card-footer {
+    padding: 16px;
+}
+
+mat-card mat-card-image {
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+}
+
+mat-card img.mat-card-image {
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+mat-card.name-card {
+    max-height: 80vh;
+    overflow: hidden;
+}
