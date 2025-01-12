@@ -29,17 +29,18 @@ div.name-wrapper {
 }
 
 .detail-card {
-    height: 85vh;
+    margin: 1em;
 }
 
 .name-card {
-    height: 85vh;
+    margin: 1em;
 
     img {
         object-fit: cover;
         overflow: hidden;
         border-radius: inherit;
         margin: 1em;
+        height: 40em;
     }
 }
 
@@ -52,6 +53,11 @@ div.name-wrapper {
 .detail-content {
     font-size: larger;
     text-align: justify;
+}
+
+.detail-card-content {
+    height: 28em;
+    overflow: auto;
 }
 
 .detail-card-footer {
@@ -100,4 +106,17 @@ div.name-wrapper {
     50% {
         border-color: #00FF00;
     }
+}
+
+.detail-card-content-action-buttons {
+    padding-bottom: 1.5em;
+}
+
+.detail-card-content-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-card-content-headers-align .mat-mdc-form-field+.mat-mdc-form-field {
+    margin-left: 0.5em;
 }

@@ -49,12 +49,12 @@ import { ThemeService } from './services/theme.service';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     AppRoutingModule,
     NgbModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule,
     NgbCarouselModule,
   ],
   providers: [

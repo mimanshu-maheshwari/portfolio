@@ -35,7 +35,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     'Backend Engineer',
     'Software Engineer',
     'Code Enthusiast',
-    '226 IM Used',
+    // '226 IM Used',
     'Generative AI Enthusias',
     'Rustacean',
   ];
