@@ -1,6 +1,16 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { TypewriterService } from '../../services/typewriter.service';
 import { map, Observable, Subscription } from 'rxjs';
+import { MatCardAvatar } from '@angular/material/card';
+import { TemplateEntity } from '@angular/compiler';
 
 @Component({
   selector: 'app-about',
