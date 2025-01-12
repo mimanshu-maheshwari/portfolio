@@ -33,7 +33,6 @@
                     <mat-card-subtitle>Full Stack Developer</mat-card-subtitle>
                 </mat-card-header>
                 <img mat-card-image src="./image/profile_image2.jpg" alt="Not a Photo of a Shiba Inu">
-
             </mat-card>
         </div>
         <div class="col-lg-6 col-sm-12">
@@ -42,7 +41,8 @@
                     <div mat-card-avatar class="name-header-image"> </div>
                     <mat-card-title>$ whoami</mat-card-title>
                     <mat-card-subtitle>
-                        404 - Not Found
+                        <!-- <span>I'm &nbsp;</span><span id="dynamic-text">{{ whoamiText }}</span> -->
+                        <span>I'm &nbsp;</span><span class="typed-element">{{ whoamiText$ | async }}</span>
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
@@ -55,10 +55,10 @@
                     </p>
                 </mat-card-content>
                 <mat-card-footer class="detail-card-footer">
-                    <mat-chip-set aria-label="Chihuahua traits">
-                        <mat-chip>#fullstack-developer</mat-chip>
-                        <mat-chip>#generative-ai-enthusiast</mat-chip>
-                        <mat-chip>#rustacean</mat-chip>
+                    <mat-chip-set aria-label="Not Chihuahua traits">
+                        @for (chip of whoamiChips; track $index) {
+                        <mat-chip>#{{chip}}</mat-chip>
+                        }
                     </mat-chip-set>
                 </mat-card-footer>
             </mat-card>

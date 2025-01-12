@@ -28,13 +28,20 @@ div.name-wrapper {
     align-items: center;
 }
 
-// .detail-card {
-//     height: 80vh;
-// }
+.detail-card {
+    height: 85vh;
+}
 
-// .name-card {
-//     height: 80vh;
-// }
+.name-card {
+    height: 85vh;
+
+    img {
+        object-fit: cover;
+        overflow: hidden;
+        border-radius: inherit;
+        margin: 1em;
+    }
+}
 
 .name-header-image {
     // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -47,23 +54,42 @@ div.name-wrapper {
 }
 
 .detail-card-footer {
-    padding: 16px;
+    padding: 1.5em;
 }
 
-mat-card mat-card-image {
-    object-fit: cover;
-    max-width: 100%;
-    height: auto;
+// mat-card mat-card-image {
+//     object-fit: cover;
+//     max-width: 100%;
+//     height: auto;
+// }
+
+// mat-card img.mat-card-image {
+//     object-fit: cover;
+//     max-width: 100%;
+//     height: auto;
+//     border-radius: 4px;
+// }
+
+// mat-card.name-card {
+//     max-height: 80vh;
+//     overflow: hidden;
+// }
+
+#dynamic-text {
+    border-right: 2px solid #00FF00;
+    padding-right: 5px;
+    animation: blink-caret 0.7s step-end infinite;
+    color: #00FF00;
 }
 
-mat-card img.mat-card-image {
-    object-fit: cover;
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
+@keyframes blink-caret {
 
-mat-card.name-card {
-    max-height: 80vh;
-    overflow: hidden;
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: #00FF00;
+    }
 }
