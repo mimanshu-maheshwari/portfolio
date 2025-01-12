@@ -53,6 +53,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     cursorChar: '|',
     loop: true,
   };
+  avatarImage = './image/profile_image3.jpg';
 
   ngOnInit(): void {
     this.whoami$ = this.typewriterService

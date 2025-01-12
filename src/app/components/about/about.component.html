@@ -38,7 +38,8 @@
         <div class="col-lg-6 col-sm-12">
             <mat-card class="detail-card" appearance="outlined">
                 <mat-card-header>
-                    <div mat-card-avatar class="name-header-image"> </div>
+                    <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + avatarImage + ')'}"
+                        class="name-header-image"> </div>
                     <mat-card-title>$ whoami</mat-card-title>
                     <mat-card-subtitle>
                         <!-- <span>I'm &nbsp;</span><span id="dynamic-text">{{ whoamiText }}</span> -->
