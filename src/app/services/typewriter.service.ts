@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { concat, from, interval, of } from 'rxjs';
 import { concatMap, delay, ignoreElements, map, repeat, take } from 'rxjs/operators';
 
@@ -29,7 +28,7 @@ export class TypewriterService {
     );
   }
 
-  getTypewriterEffect(titles: string[]) {
+  getTypewriterEffect(titles: Array<string>) {
     return from(titles).pipe(
       concatMap((title) => this.typeEffect(title)),
       repeat(),

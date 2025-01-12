@@ -1,6 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { TypewriterService } from '../../services/typewriter.service';
-import { map } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-about',
@@ -9,8 +9,10 @@ import { map } from 'rxjs';
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit, OnDestroy {
   private typewriterService = inject(TypewriterService);
+  whoami$!: Subscription;
+  whoamiText: string = '207 Multi-Status';
   //  implements OnInit, AfterViewInit {
   whoamiChips: Array<string> = [
     '207 Multi-Status',
@@ -24,7 +26,7 @@ export class AboutComponent {
     'Software Engineer',
     'Code Enthusiast',
     '226 IM Used',
-    'Generative Ai Enthusias',
+    'Generative AI Enthusias',
     'Rustacean',
   ];
   currentPhraseIndex: number = 0;
@@ -42,7 +44,14 @@ export class AboutComponent {
     loop: true,
   };
 
-  whoamiText$ = this.typewriterService
-    .getTypewriterEffect(this.whoamiChips)
-    .pipe(map((text) => text));
+  ngOnInit(): void {
+    this.whoami$ = this.typewriterService
+      .getTypewriterEffect(this.whoamiChips)
+      .pipe(map((text) => text))
+      .subscribe({ next: (val) => (this.whoamiText = val) });
+  }
+
+  ngOnDestroy(): void {
+    this.whoami$.unsubscribe();
+  }
 }

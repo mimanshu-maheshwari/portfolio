@@ -50,7 +50,8 @@ div.name-wrapper {
 }
 
 .detail-content {
-    font-size: x-large;
+    font-size: larger;
+    text-align: justify;
 }
 
 .detail-card-footer {
@@ -74,6 +75,13 @@ div.name-wrapper {
 //     max-height: 80vh;
 //     overflow: hidden;
 // }
+
+.dynamic-text {
+    border-right: 2px solid #00FF00;
+    padding-right: 5px;
+    animation: blink-caret 0.7s step-end infinite;
+    color: #00FF00;
+}
 
 #dynamic-text {
     border-right: 2px solid #00FF00;
