@@ -62,6 +62,8 @@ div.name-wrapper {
 
 .detail-card-footer {
     padding: 1.5em;
+    max-height: 13em;
+    overflow: auto;
 }
 
 // mat-card mat-card-image {
