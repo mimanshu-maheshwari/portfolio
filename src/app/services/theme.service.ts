@@ -31,6 +31,6 @@ export class ThemeService {
   private applyTheme(): void {
     const body = document.body;
     body.style.colorScheme = this.themes[this.themeIndex];
-    Number(localStorage.setItem('THEME', this.themeIndex.toString()));
+    localStorage.setItem('THEME', this.themeIndex.toString());
   }
 }
