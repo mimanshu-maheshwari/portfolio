@@ -11,11 +11,14 @@ export enum Theme {
 })
 export class ThemeService {
   private themes: Theme[] = Object.values(Theme);
-  private themeIndex: number =
-    Number(localStorage.getItem('THEME')) || this.themes.indexOf(Theme.SYSTEM);
+  private themeIndex: number = !!localStorage.getItem('THEME')
+    ? Number(localStorage.getItem('THEME'))
+    : this.themes.indexOf(Theme.SYSTEM);
 
   constructor() {
-    this.themeIndex = Number(localStorage.getItem('THEME')) || this.themes.indexOf(Theme.SYSTEM);
+    this.themeIndex = !!localStorage.getItem('THEME')
+      ? Number(localStorage.getItem('THEME'))
+      : this.themes.indexOf(Theme.SYSTEM);
     this.applyTheme();
   }
 
