@@ -32,6 +32,7 @@ import { MaterialModule } from './modules/material.module';
 import { ThemeService } from './services/theme.service';
 import { SnakecasePipe } from './pipes/snakecase.pipe';
 import { KebabcasePipe } from './pipes/kebabcase.pipe';
+import { environment } from './../environments/environment';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,9 @@ import { KebabcasePipe } from './pipes/kebabcase.pipe';
     provideApollo(() => {
       const httpLink = inject(HttpLink);
       return {
-        link: httpLink.create({ uri: '/leetcode' }), // proxy '/leetcode' to original url
+        link: httpLink.create({
+          uri: environment.leetcodeUrl,
+        }), // proxy '/leetcode' to original url
         cache: new InMemoryCache(),
       };
     }),
