@@ -36,7 +36,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     'Software Engineer',
     'Code Enthusiast',
     // '226 IM Used',
-    'Generative AI Enthusias',
+    'Generative AI Enthusiast',
     'Rustacean',
   ];
   currentPhraseIndex: number = 0;

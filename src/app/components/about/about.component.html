@@ -181,7 +181,7 @@
                 <mat-card-footer class="detail-card-footer">
                     <mat-chip-set aria-label="Not Chihuahua traits">
                         @for (chip of whoamiChips; track $index) {
-                        <mat-chip>#{{chip}}</mat-chip>
+                        <mat-chip>#{{chip | kebabcase}}</mat-chip>
                         }
                     </mat-chip-set>
                 </mat-card-footer>

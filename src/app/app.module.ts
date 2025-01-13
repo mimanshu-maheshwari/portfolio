@@ -30,6 +30,8 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { PublicationsComponent } from './components/publications/publications.component';
 import { MaterialModule } from './modules/material.module';
 import { ThemeService } from './services/theme.service';
+import { SnakecasePipe } from './pipes/snakecase.pipe';
+import { KebabcasePipe } from './pipes/kebabcase.pipe';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { ThemeService } from './services/theme.service';
     UserStatisticsComponent,
     UserProfileComponent,
     HeatmapComponent,
+    SnakecasePipe,
+    KebabcasePipe,
   ],
   imports: [
     BrowserModule,
