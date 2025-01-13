@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input, inject } from '@angular/core';
 import { HeaderLink } from '../../../models/header-link.model';
 import { ActivatedRoute } from '@angular/router';
-import { ThemeService } from '../../../services/theme.service';
+import { Theme, ThemeService } from '../../../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -22,4 +22,8 @@ export class HeaderComponent {
   public onToggleSidenav = () => {
     this.sidenavToggle.emit();
   };
+
+  onThemeChange(event: number): void {
+    this.themeService.changeTheme(event);
+  }
 }

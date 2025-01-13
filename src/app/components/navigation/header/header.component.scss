@@ -6,3 +6,16 @@ a {
 a:hover {
   color: var(--mat-sys-on-primary);
 }
+
+.theme-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  .theme-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

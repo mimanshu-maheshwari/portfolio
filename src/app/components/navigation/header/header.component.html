@@ -17,9 +17,15 @@
     </ul>
   </div>
   <div class="ms-auto">
-    <mat-slide-toggle (change)="themeService.toggleTheme()" [checked]="themeService.isDarkTheme">
-      <mat-icon *ngIf="themeService.isDarkTheme">nights_stay</mat-icon>
-      <mat-icon *ngIf="!themeService.isDarkTheme">wb_sunny</mat-icon>
-    </mat-slide-toggle>
+    <div class="theme-selector">
+      <mat-slider discrete="false" tickInterval="1" min="0" max="2" step="1">
+        <input (valueChange)="onThemeChange($event)" [value]="this.themeService.currentTheme" matSliderThumb />
+      </mat-slider>
+      <div class="theme-labels">
+        <mat-icon>dark_mode</mat-icon>
+        <mat-icon>settings_system_daydream</mat-icon>
+        <mat-icon>light_mode</mat-icon>
+      </div>
+    </div>
   </div>
 </mat-toolbar>

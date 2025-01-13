@@ -9,6 +9,8 @@ mat-sidenav {
 }
 
 main {
-  padding: 10px;
+  padding: 1em;
   height: 90vh;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
 }

@@ -1,33 +1,36 @@
 import { Injectable } from '@angular/core';
 
+export enum Theme {
+  DARK = 'dark',
+  SYSTEM = 'light dark',
+  LIGHT = 'light',
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  private darkTheme: boolean = false;
+  private themes: Theme[] = Object.values(Theme);
+  private themeIndex: number =
+    Number(localStorage.getItem('THEME')) || this.themes.indexOf(Theme.SYSTEM);
 
   constructor() {
-    this.darkTheme = true;
+    this.themeIndex = Number(localStorage.getItem('THEME')) || this.themes.indexOf(Theme.SYSTEM);
     this.applyTheme();
   }
 
-  toggleTheme(): void {
-    this.darkTheme = !this.darkTheme;
+  changeTheme(theme: number): void {
+    this.themeIndex = theme;
     this.applyTheme();
   }
 
-  get isDarkTheme(): boolean {
-    return this.darkTheme;
+  get currentTheme(): number {
+    return this.themeIndex;
   }
 
   private applyTheme(): void {
-    // const body = document.body;
-    // if (this.darkTheme) {
-    //   body.classList.add('dark-theme');
-    //   body.classList.remove('light-theme');
-    // } else {
-    //   body.classList.add('light-theme');
-    //   body.classList.remove('dark-theme');
-    // }
+    const body = document.body;
+    body.style.colorScheme = this.themes[this.themeIndex];
+    Number(localStorage.setItem('THEME', this.themeIndex.toString()));
   }
 }
