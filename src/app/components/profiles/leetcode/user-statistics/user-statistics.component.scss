@@ -15,7 +15,7 @@
     }
   }
 
-  .red {
+  &.red {
     border-color: red;
 
     &:hover {
@@ -23,7 +23,7 @@
     }
   }
 
-  .orange {
+  &.orange {
     border-color: orange;
 
     &:hover {

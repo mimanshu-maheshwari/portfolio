@@ -9,7 +9,8 @@
           <mat-card-content>
             Easy
             <br />
-            {{easyQuestionsDataset.datasets[0].data[0]}} / {{easyQuestionsDataset.datasets[0].data[1]}}
+            {{easyQuestionsDataset.datasets[0].data[0]}} / {{ easyQuestionsDataset.datasets[0].data[0]+
+            easyQuestionsDataset.datasets[0].data[1]}}
           </mat-card-content>
         </mat-card>
 
@@ -18,7 +19,8 @@
           <mat-card-content>
             Medium
             <br />
-            {{mediumQuestionsDataset.datasets[0].data[0]}} / {{mediumQuestionsDataset.datasets[0].data[1]}}
+            {{mediumQuestionsDataset.datasets[0].data[0]}} / {{mediumQuestionsDataset.datasets[0].data[0] +
+            mediumQuestionsDataset.datasets[0].data[1]}}
           </mat-card-content>
         </mat-card>
 
@@ -27,7 +29,8 @@
           <mat-card-content>
             Hard
             <br />
-            {{hardQuestionsDataset.datasets[0].data[0]}} / {{hardQuestionsDataset.datasets[0].data[1]}}
+            {{hardQuestionsDataset.datasets[0].data[0]}} / {{hardQuestionsDataset.datasets[0].data[0] +
+            hardQuestionsDataset.datasets[0].data[1]}}
           </mat-card-content>
         </mat-card>
       </mat-card-content>

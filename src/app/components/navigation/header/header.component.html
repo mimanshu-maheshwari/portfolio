@@ -22,9 +22,10 @@
         <input (valueChange)="onThemeChange($event)" [value]="this.themeService.currentTheme" matSliderThumb />
       </mat-slider>
       <div class="theme-labels">
-        <mat-icon>dark_mode</mat-icon>
-        <mat-icon>settings_system_daydream</mat-icon>
-        <mat-icon>light_mode</mat-icon>
+        <mat-icon title="Dark" [style.color]="themeService.currentTheme === 0 ? 'magenta': ''">dark_mode</mat-icon>
+        <mat-icon title="System Default"
+          [style.color]="themeService.currentTheme === 1 ? 'gray': ''">settings_system_daydream</mat-icon>
+        <mat-icon title="Light" [style.color]="themeService.currentTheme === 2 ? 'wheat': ''">light_mode</mat-icon>
       </div>
     </div>
   </div>
