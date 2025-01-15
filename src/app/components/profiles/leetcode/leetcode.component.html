@@ -1,17 +1,18 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12 col-md-3 col-lg-3">
+<mat-tab-group dynamicHeight class="w-100">
+    <mat-tab label="Profile">
+        <div class="">
             <app-user-profile [profile]="profile" />
         </div>
-        <div class="col-sm-12 col-md-9 col-lg-9">
-            <ngb-carousel>
-                <ng-template ngbSlide>
-                    <app-user-statistics [stats]="stats" />
-                </ng-template>
-                <ng-template ngbSlide>
-                    <app-heatmap [submissionCalendar]="calendarData" />
-                </ng-template>
-            </ngb-carousel>
+    </mat-tab>
+    <mat-tab label="Stats">
+        <div class="">
+            <app-user-statistics [stats]="stats" />
         </div>
-    </div>
-</div>
+    </mat-tab>
+    <mat-tab label="Submissions">
+        <div class="">
+            <!-- <app-heatmap [submissionCalendar]="calendarData" /> -->
+            <app-submissions />
+        </div>
+    </mat-tab>
+</mat-tab-group>

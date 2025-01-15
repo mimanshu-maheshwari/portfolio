@@ -22,7 +22,8 @@ export class LeetcodeComponent implements OnInit {
       this.calendarData = this.userData.submissionCalendar;
       this.stats = this.userData.submitStats;
       this.profile = this.userData.profile;
-      // console.log(this.calendarData);
+      console.log('check::keys', Object.keys(data));
+      console.log('check::data', data);
     });
   }
 }

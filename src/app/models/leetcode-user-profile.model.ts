@@ -1,40 +1,48 @@
 export interface UserDataProfile {
-  aboutMe: string;
-  company?: string;
-  countryName?: string;
   realName: string;
-  birthday?: string;
   userAvatar: string;
+  birthday?: string;
   ranking: number;
   reputation: number;
+  websites: Array<string>;
+  countryName?: string;
+  company?: string;
   school?: string;
   skillTags: Array<string>;
-  websites: Array<string>;
+  starRating: number;
+  aboutMe: string;
 }
 
 export interface MatchedUser {
-  activeBadge: Badge;
-  badges: Array<Badge>;
-  githubUrl: string;
-  linkedinUrl?: string;
-  profile: UserDataProfile;
-  upcomingBadges: Array<Badge>;
   username: string;
-  twitterUrl?: string;
+  githubUrl: string;
+  twitterUrl: string;
+  linkedinUrl: string;
+  contributions: Contributions;
+  profile: UserDataProfile;
+  badges?: Array<Badge>;
+  upcomingBadges: Array<Badge>;
+  activeBadge?: Badge;
+  submitStats: SubmitStats;
   submissionCalendar: { [key: string]: number };
-  submitStats: {
-    totalSubmissionNum: Array<{
-      difficulty: Difficulty;
-      count: number;
-      submissions: number;
-    }>;
-    acSubmissionNum: Array<{
-      difficulty: Difficulty;
-      count: number;
-      submissions: number;
-    }>;
-    count: number;
-  };
+}
+
+export interface SubmitStats {
+  totalSubmissionNum: Array<SubmissionNum>;
+  acSubmissionNum: Array<SubmissionNum>;
+  count: number;
+}
+
+export interface SubmissionNum {
+  difficulty: Difficulty;
+  count: number;
+  submissions: number;
+}
+
+export interface Contributions {
+  points?: number;
+  questionCount?: number;
+  testcaseCount?: number;
 }
 
 export interface UserData {
@@ -96,7 +104,7 @@ export enum Difficulty {
 export interface ProblemSetQuestionListData {
   problemsetQuestionList: {
     total: number;
-    questions: Array<{}>;
+    questions: Array<Question>;
   };
 }
 
@@ -120,7 +128,7 @@ export interface Question {
   questionId: number;
   questionFrontendId: number;
   solution: string;
-  similarQuestions: Array<{}>;
+  similarQuestions: Array<Question>;
   title: string;
   titleSlug: string;
   topicTags: Array<string>;

@@ -10,6 +10,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatExpansionModule,
     MatCardModule,
     MatSliderModule,
+    MatTabsModule,
   ],
   exports: [
     MatToolbarModule,
@@ -40,6 +42,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatExpansionModule,
     MatCardModule,
     MatSliderModule,
+    MatTabsModule,
   ],
 })
 export class MaterialModule {}

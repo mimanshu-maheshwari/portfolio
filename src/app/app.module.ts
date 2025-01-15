@@ -35,6 +35,7 @@ import { KebabcasePipe } from './pipes/kebabcase.pipe';
 import { environment } from './../environments/environment';
 import { setContext } from '@apollo/client/link/context';
 import { ApolloLink } from '@apollo/client/core';
+import { SubmissionsComponent } from './components/profiles/leetcode/submissions/submissions.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ApolloLink } from '@apollo/client/core';
     HeatmapComponent,
     SnakecasePipe,
     KebabcasePipe,
+    SubmissionsComponent,
   ],
   imports: [
     BrowserModule,
