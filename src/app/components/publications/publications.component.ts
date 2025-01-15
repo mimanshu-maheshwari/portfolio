@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Publication } from '../../models/leetcode-user-profile.model';
+import { Publication } from '../../models/leetcode.model';
 
 @Component({
   selector: 'app-publications',

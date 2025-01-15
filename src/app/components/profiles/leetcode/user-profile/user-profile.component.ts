@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { TagProblemCounts, UserDataProfile } from '../../../../models/leetcode.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,5 +8,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './user-profile.component.scss',
 })
 export class UserProfileComponent {
-  @Input() profile: any;
+  @Input() profile!: UserDataProfile;
+  @Input() tagProblemCounts!: TagProblemCounts;
 }

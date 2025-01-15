@@ -58,6 +58,23 @@ export const GET_PROFILE = gql`
         }
       }
       submissionCalendar
+      tagProblemCounts {
+        intermediate {
+          problemsSolved
+          tagName
+          tagSlug
+        }
+        fundamental {
+          problemsSolved
+          tagName
+          tagSlug
+        }
+        advanced {
+          problemsSolved
+          tagName
+          tagSlug
+        }
+      }
     }
     recentSubmissionList(username: $username, limit: 20) {
       title

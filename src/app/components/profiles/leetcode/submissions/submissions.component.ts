@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Submission } from '../../../../models/leetcode-user-profile.model';
+import { Submission } from '../../../../models/leetcode.model';
 
 @Component({
   selector: 'app-submissions',

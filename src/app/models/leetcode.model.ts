@@ -25,6 +25,18 @@ export interface MatchedUser {
   activeBadge?: Badge;
   submitStats: SubmitStats;
   submissionCalendar: { [key: string]: number };
+  tagProblemCounts: TagProblemCounts;
+}
+
+export interface TagProblemCounts {
+  advanced: Array<ProblemTag>;
+  fundamental: Array<ProblemTag>;
+  intermediate: Array<ProblemTag>;
+}
+export interface ProblemTag {
+  problemsSolved: number;
+  tagName: string;
+  tagSlug: string;
 }
 
 export interface SubmitStats {

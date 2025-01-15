@@ -1,9 +1,5 @@
 import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import {
-  Difficulty,
-  QuestionsCount,
-  SubmitStats,
-} from '../../../../models/leetcode-user-profile.model';
+import { Difficulty, QuestionsCount, SubmitStats } from '../../../../models/leetcode.model';
 
 @Component({
   selector: 'app-user-statistics',

@@ -4,7 +4,9 @@ import {
   QuestionsCount,
   Submission,
   SubmitStats,
-} from '../../../models/leetcode-user-profile.model';
+  TagProblemCounts,
+  UserDataProfile,
+} from '../../../models/leetcode.model';
 import { LeetcodeService } from '../../../services/leetcode.service';
 
 @Component({
@@ -18,8 +20,9 @@ export class LeetcodeComponent implements OnInit {
   calendarData!: any;
   stats!: SubmitStats;
   allQuestionsCount!: Array<QuestionsCount>;
-  profile!: any;
+  profile!: UserDataProfile;
   recentSubmissions!: Array<Submission>;
+  tagProblemCounts!: TagProblemCounts;
   private leetcodeService: LeetcodeService = inject(LeetcodeService);
 
   ngOnInit(): void {
@@ -31,6 +34,7 @@ export class LeetcodeComponent implements OnInit {
       this.userData = data.matchedUser;
       this.recentSubmissions = data.recentSubmissionList;
       this.allQuestionsCount = data.allQuestionsCount;
+      this.tagProblemCounts = this.userData.tagProblemCounts;
 
       // modify
       this.stats = this.userData.submitStats;

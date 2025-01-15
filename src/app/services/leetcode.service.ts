@@ -5,7 +5,7 @@ import { CONTEST } from '../models/graphql-queries/contest.gql';
 import { DAILY_PROBLEM } from '../models/graphql-queries/daily-problem.gql';
 import { LANGUAGE_STATS } from '../models/graphql-queries/language-stats.gql';
 import { GET_PROFILE } from '../models/graphql-queries/leetcode-profile.gql';
-import { UserData } from '../models/leetcode-user-profile.model';
+import { UserData } from '../models/leetcode.model';
 import { ApolloQueryResult } from '@apollo/client/core';
 
 @Injectable({
