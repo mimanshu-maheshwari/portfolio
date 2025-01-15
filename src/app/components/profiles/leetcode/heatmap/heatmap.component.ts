@@ -147,4 +147,148 @@ export class HeatmapComponent implements OnChanges {
 
     return processedData;
   }
+
+  // createHeatmap(submissionCalendar: any) {
+  //   const heatmapContainer = document.getElementById('heatmapChart');
+  //   if (heatmapContainer) {
+  //     heatmapContainer.innerHTML =
+  //       '<h2 class="text-2xl font-bold text-white mb-4">Submission Heatmap</h2>'; // Clear existing content
+
+  //     // Create container for the entire heatmap
+  //     const container = document.createElement('div');
+  //     container.className = 'flex flex-col gap-2';
+
+  //     // Create month labels
+  //     const monthsContainer = document.createElement('div');
+  //     monthsContainer.className = 'flex text-xs text-gray-400 mb-1';
+  //     const months = [
+  //       'Jan',
+  //       'Feb',
+  //       'Mar',
+  //       'Apr',
+  //       'May',
+  //       'Jun',
+  //       'Jul',
+  //       'Aug',
+  //       'Sep',
+  //       'Oct',
+  //       'Nov',
+  //       'Dec',
+  //     ];
+  //     months.forEach((month) => {
+  //       const monthLabel = document.createElement('div');
+  //       monthLabel.className = 'flex-1 text-center';
+  //       monthLabel.textContent = month;
+  //       monthsContainer.appendChild(monthLabel);
+  //     });
+  //     container.appendChild(monthsContainer);
+
+  //     // Create grid container
+  //     const gridContainer = document.createElement('div');
+  //     gridContainer.className = 'flex gap-2';
+
+  //     // Add day labels
+  //     const dayLabels = document.createElement('div');
+  //     dayLabels.className = 'flex flex-col gap-8 text-xs text-gray-400 pr-2';
+  //     ['Mon', 'Wed', 'Fri'].forEach((day) => {
+  //       const dayLabel = document.createElement('div');
+  //       dayLabel.textContent = day;
+  //       dayLabels.appendChild(dayLabel);
+  //     });
+  //     gridContainer.appendChild(dayLabels);
+
+  //     // Process and create contribution grid
+  //     const { weeks } = this.processCalendarData(submissionCalendar);
+  //     const contributionGrid = document.createElement('div');
+  //     contributionGrid.className = 'flex gap-1';
+
+  //     weeks.forEach((week) => {
+  //       const weekContainer = document.createElement('div');
+  //       weekContainer.className = 'flex flex-col gap-1';
+
+  //       week.forEach(({ date, count }) => {
+  //         const cell = document.createElement('div');
+  //         cell.className = `contribution-cell level-${this.getContributionLevel(count)}`;
+  //         cell.title = `${date}: ${count} submissions`;
+  //         weekContainer.appendChild(cell);
+  //       });
+
+  //       contributionGrid.appendChild(weekContainer);
+  //     });
+
+  //     gridContainer.appendChild(contributionGrid);
+  //     container.appendChild(gridContainer);
+
+  //     // Add legend
+  //     const legendContainer = document.createElement('div');
+  //     legendContainer.className = 'flex items-center gap-2 text-xs text-gray-400 mt-4';
+  //     legendContainer.innerHTML = `
+  //               <span>Less</span>
+  //               <div class="flex gap-1">
+  //                   <div class="contribution-cell level-0"></div>
+  //                   <div class="contribution-cell level-1"></div>
+  //                   <div class="contribution-cell level-2"></div>
+  //                   <div class="contribution-cell level-3"></div>
+  //                   <div class="contribution-cell level-4"></div>
+  //               </div>
+  //               <span>More</span>
+  //           `;
+  //     container.appendChild(legendContainer);
+
+  //     heatmapContainer.appendChild(container);
+  //   }
+  // }
+
+  // processCalendarData(submissionCalendar: any) {
+  //   const weeks = [];
+  //   let currentWeek = [];
+
+  //   // Convert timestamps to date objects and sort them
+  //   const dates = Object.keys(submissionCalendar)
+  //     .map((timestamp) => ({
+  //       date: new Date(timestamp * 1000),
+  //       count: submissionCalendar[timestamp],
+  //     }))
+  //     .sort((a, b) => a.date - b.date);
+
+  //   // Fill in missing dates with zero contributions
+  //   const startDate = dates[0].date;
+  //   const endDate = dates[dates.length - 1].date;
+  //   const dateMap = new Map(dates.map((d) => [d.date.toISOString().split('T')[0], d.count]));
+
+  //   for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+  //     const dateStr = d.toISOString().split('T')[0];
+  //     const count = dateMap.get(dateStr) || 0;
+  //     const dayOfWeek = d.getDay();
+
+  //     if (dayOfWeek === 0 && currentWeek.length > 0) {
+  //       weeks.push(currentWeek);
+  //       currentWeek = [];
+  //     }
+
+  //     currentWeek.push({
+  //       date: dateStr,
+  //       count: count,
+  //     });
+
+  //     if (currentWeek.length === 7) {
+  //       weeks.push(currentWeek);
+  //       currentWeek = [];
+  //     }
+  //   }
+
+  //   if (currentWeek.length > 0) {
+  //     weeks.push(currentWeek);
+  //   }
+
+  //   return { weeks };
+  // }
+
+  // getContributionLevel(count: number) {
+  //   if (count === 0) return 0;
+  //   if (count <= 3) return 1;
+  //   if (count <= 6) return 2;
+  //   if (count <= 9) return 3;
+  //   return 4;
+  // }
 }

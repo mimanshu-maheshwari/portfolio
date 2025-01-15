@@ -33,6 +33,8 @@ import { ThemeService } from './services/theme.service';
 import { SnakecasePipe } from './pipes/snakecase.pipe';
 import { KebabcasePipe } from './pipes/kebabcase.pipe';
 import { environment } from './../environments/environment';
+import { setContext } from '@apollo/client/link/context';
+import { ApolloLink } from '@apollo/client/core';
 
 @NgModule({
   declarations: [
@@ -70,10 +72,17 @@ import { environment } from './../environments/environment';
     { provide: APP_BASE_HREF, useValue: '/portfolio' },
     provideApollo(() => {
       const httpLink = inject(HttpLink);
+
+      const basic = setContext((operation, context) => ({
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      }));
       return {
-        link: httpLink.create({
-          uri: environment.leetcodeUrl,
-        }), // proxy '/leetcode' to original url
+        link: ApolloLink.from([basic, httpLink.create({ uri: environment.leetcodeUrl })]),
+        // link: httpLink.create({
+        //   uri: environment.leetcodeUrl,
+        // }), // proxy '/leetcode' to original url
         cache: new InMemoryCache(),
       };
     }),
