@@ -36,6 +36,8 @@ import { environment } from './../environments/environment';
 import { setContext } from '@apollo/client/link/context';
 import { ApolloLink } from '@apollo/client/core';
 import { SubmissionsComponent } from './components/profiles/leetcode/submissions/submissions.component';
+import { DoughnutChartComponent } from './components/shared/charts/doughnut-chart/doughnut-chart.component';
+import { PieChartComponent } from './components/shared/charts/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { SubmissionsComponent } from './components/profiles/leetcode/submissions
     SnakecasePipe,
     KebabcasePipe,
     SubmissionsComponent,
+    DoughnutChartComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,
