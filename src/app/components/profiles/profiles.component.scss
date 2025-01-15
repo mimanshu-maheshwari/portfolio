@@ -1,0 +1,15 @@
+.leetcode-card {
+    min-height: 30em;
+
+    .leetcode-card-header {
+        align-items: center;
+    }
+
+    .leetcode-card-content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}

@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-profiles',
   standalone: false,
-  
+
   templateUrl: './profiles.component.html',
-  styleUrl: './profiles.component.scss'
+  styleUrl: './profiles.component.scss',
 })
 export class ProfilesComponent {
-
+  leetcodeAvatar = './image/leetcode.png';
 }

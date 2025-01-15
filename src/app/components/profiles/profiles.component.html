@@ -1,2 +1,14 @@
-<p>profiles works!</p>
-<app-leetcode />
+<mat-card appearance="raised" class="leetcode-card">
+    <mat-card-header class="leetcode-card-header">
+        <div mat-card-avatar
+            [ngStyle]="{'background-image': 'url(' + leetcodeAvatar + ')', 'margin-bottom':'0.5em' ,'transform': 'scale(0.7)'}"
+            class="name-header-image">
+        </div>
+        <mat-card-title>
+            <h2>LeetCode </h2>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="leetcode-card-content">
+        <app-leetcode />
+    </mat-card-content>
+</mat-card>
