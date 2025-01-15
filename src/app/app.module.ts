@@ -38,6 +38,7 @@ import { ApolloLink } from '@apollo/client/core';
 import { SubmissionsComponent } from './components/profiles/leetcode/submissions/submissions.component';
 import { DoughnutChartComponent } from './components/shared/charts/doughnut-chart/doughnut-chart.component';
 import { PieChartComponent } from './components/shared/charts/pie-chart/pie-chart.component';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { PieChartComponent } from './components/shared/charts/pie-chart/pie-char
     FormsModule,
     ReactiveFormsModule,
     NgbCarouselModule,
+    BaseChartDirective,
   ],
   providers: [
     provideZoneChangeDetection(),
@@ -86,13 +88,11 @@ import { PieChartComponent } from './components/shared/charts/pie-chart/pie-char
       }));
       return {
         link: ApolloLink.from([basic, httpLink.create({ uri: environment.leetcodeUrl })]),
-        // link: httpLink.create({
-        //   uri: environment.leetcodeUrl,
-        // }), // proxy '/leetcode' to original url
         cache: new InMemoryCache(),
       };
     }),
     ThemeService,
+    provideCharts(withDefaultRegisterables()),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

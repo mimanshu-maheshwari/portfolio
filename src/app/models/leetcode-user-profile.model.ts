@@ -67,9 +67,15 @@ export interface UserData {
       startTime: string;
     };
   }>;
+  allQuestionsCount: Array<QuestionsCount>;
   matchedUser: MatchedUser;
   recentAcSubmissionList: Array<{}>;
   recentSubmissionList: Array<Submission>;
+}
+
+export interface QuestionsCount {
+  count: number;
+  difficulty: Difficulty;
 }
 
 export interface Badge {
@@ -83,8 +89,6 @@ export enum Difficulty {
   MEDIUM = 'Medium',
   HARD = 'Hard',
 }
-
-// type Difficulty = 'All' | 'Easy' | 'Medium' | 'Hard';
 
 //User Details
 // export type FetchUserDataRequest = Request<

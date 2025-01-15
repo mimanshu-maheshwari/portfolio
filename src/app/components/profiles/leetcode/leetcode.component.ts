@@ -1,5 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MatchedUser, Submission } from '../../../models/leetcode-user-profile.model';
+import {
+  MatchedUser,
+  QuestionsCount,
+  Submission,
+  SubmitStats,
+} from '../../../models/leetcode-user-profile.model';
 import { LeetcodeService } from '../../../services/leetcode.service';
 
 @Component({
@@ -11,20 +16,26 @@ import { LeetcodeService } from '../../../services/leetcode.service';
 export class LeetcodeComponent implements OnInit {
   userData!: MatchedUser;
   calendarData!: any;
-  stats!: any;
+  stats!: SubmitStats;
+  allQuestionsCount!: Array<QuestionsCount>;
   profile!: any;
   recentSubmissions!: Array<Submission>;
   private leetcodeService: LeetcodeService = inject(LeetcodeService);
 
   ngOnInit(): void {
     this.leetcodeService.getProfile('mimanshu-maheshwari').subscribe(({ data, loading }) => {
-      this.userData = data.matchedUser as MatchedUser;
-      this.calendarData = this.userData.submissionCalendar;
-      this.stats = this.userData.submitStats;
-      this.profile = this.userData.profile;
+      // remove
+      console.debug('check::data', data);
+
+      // done
+      this.userData = data.matchedUser;
       this.recentSubmissions = data.recentSubmissionList;
-      console.log('check::keys', Object.keys(data));
-      console.log('check::data', data);
+      this.allQuestionsCount = data.allQuestionsCount;
+
+      // modify
+      this.stats = this.userData.submitStats;
+      this.calendarData = this.userData.submissionCalendar;
+      this.profile = this.userData.profile;
     });
   }
 }

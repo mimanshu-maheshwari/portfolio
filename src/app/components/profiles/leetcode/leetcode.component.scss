@@ -1,10 +1,18 @@
 .submissions {
-    display: flex;
-    overflow: auto;
-    align-items: stretch;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    flex-direction: row;
-    max-height: 25em;
-    gap: 0.5em;
+  display: flex;
+  overflow: auto;
+  align-items: stretch;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-height: 25em;
+  gap: 0.5em;
+}
+
+.user-stats {
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: nowrap;
+  // justify-content: space-around;
+  // align-items: center;
 }

@@ -1,5 +1,9 @@
-import { Component, Input, ElementRef, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
-import * as d3 from 'd3';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Difficulty,
+  QuestionsCount,
+  SubmitStats,
+} from '../../../../models/leetcode-user-profile.model';
 
 @Component({
   selector: 'app-user-statistics',
@@ -7,53 +11,101 @@ import * as d3 from 'd3';
   templateUrl: './user-statistics.component.html',
   styleUrl: './user-statistics.component.scss',
 })
-export class UserStatisticsComponent implements OnChanges {
-  @Input() stats: any;
+export class UserStatisticsComponent {
+  @Input() stats!: SubmitStats;
+  @Input() allQuestionsCount!: Array<QuestionsCount>;
   @ViewChild('chart', { static: true }) chartContainer!: ElementRef;
+  protected labels: Difficulty[] = Object.values(Difficulty);
+  protected selectedDifficulty: Difficulty = this.labels[0];
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.stats) {
-      this.renderChart();
+  get allQuestionsDataset() {
+    if (!this.stats?.acSubmissionNum || !this.allQuestionsCount?.length) {
+      return {
+        labels: [],
+        datasets: [],
+      };
     }
+    const totalCount =
+      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.ALL)?.count || 0;
+    const userCount =
+      this.stats.acSubmissionNum.find((sub) => sub.difficulty === Difficulty.ALL)?.count || 0;
+    return {
+      labels: ['Solved', 'Remaining'],
+      datasets: [{ data: [userCount, totalCount - userCount] }],
+    };
   }
 
-  renderChart(): void {
-    const data = this.stats.totalSubmissionNum;
-    const svg = d3
-      .select(this.chartContainer.nativeElement)
-      .append('svg')
-      .attr('width', 600)
-      .attr('height', 300);
+  get hardQuestionsDataset() {
+    if (!this.stats?.acSubmissionNum || !this.allQuestionsCount?.length) {
+      return {
+        labels: [],
+        datasets: [],
+      };
+    }
+    const totalCount =
+      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.HARD)?.count || 0;
+    const userCount =
+      this.stats.acSubmissionNum.find((sub) => sub.difficulty === Difficulty.HARD)?.count || 0;
+    return {
+      labels: ['Solved', 'Remaining'],
+      datasets: [{ data: [userCount, totalCount - userCount] }],
+    };
+  }
 
-    const margin = { top: 20, right: 20, bottom: 50, left: 50 };
-    const width = +svg.attr('width') - margin.left - margin.right;
-    const height = +svg.attr('height') - margin.top - margin.bottom;
-    const chart = svg.append('g').attr('transform', `translate(${margin.left}, ${margin.top})`);
+  get mediumQuestionsDataset() {
+    if (!this.stats?.acSubmissionNum || !this.allQuestionsCount?.length) {
+      return {
+        labels: [],
+        datasets: [],
+      };
+    }
+    const totalCount =
+      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.MEDIUM)?.count || 0;
+    const userCount =
+      this.stats.acSubmissionNum.find((sub) => sub.difficulty === Difficulty.MEDIUM)?.count || 0;
+    return {
+      labels: ['Solved', 'Remaining'],
+      datasets: [{ data: [userCount, totalCount - userCount] }],
+    };
+  }
 
-    const x = d3.scaleBand().rangeRound([0, width]).padding(0.1);
-    const y = d3.scaleLinear().rangeRound([height, 0]);
+  get easyQuestionsDataset() {
+    if (!this.stats?.acSubmissionNum || !this.allQuestionsCount?.length) {
+      return {
+        labels: [],
+        datasets: [],
+      };
+    }
+    const totalCount =
+      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.EASY)?.count || 0;
+    const userCount =
+      this.stats.acSubmissionNum.find((sub) => sub.difficulty === Difficulty.EASY)?.count || 0;
+    return {
+      labels: ['Solved', 'Remaining'],
+      datasets: [{ data: [userCount, totalCount - userCount] }],
+    };
+  }
 
-    x.domain(data.map((d: any) => d.difficulty));
-    // y.domain([0, d3.max(data, (d: any) => d.submissions) || 0]);
-    y.domain([0, d3.max(data as number[], (d: any) => d.submissions) || 0]);
+  get solvedQuestionCount() {
+    if (!this.stats?.acSubmissionNum) {
+      return {
+        labels: [],
+        datasets: [],
+      };
+    }
+    const labels = this.stats.acSubmissionNum
+      .filter((sub) => sub.difficulty !== Difficulty.ALL)
+      .map((sub) => sub.difficulty);
+    const data = this.stats.acSubmissionNum
+      .filter((sub) => sub.difficulty !== Difficulty.ALL)
+      .map((sub) => sub.count);
+    return {
+      labels,
+      datasets: [{ data }],
+    };
+  }
 
-    chart
-      .append('g')
-      .attr('class', 'axis axis--x')
-      .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(x));
-
-    chart.append('g').attr('class', 'axis axis--y').call(d3.axisLeft(y).ticks(10));
-
-    chart
-      .selectAll('.bar')
-      .data(data)
-      .enter()
-      .append('rect')
-      .attr('class', 'bar')
-      .attr('x', (d: any) => x(d.difficulty)!)
-      .attr('y', (d: any) => y(d.submissions))
-      .attr('width', x.bandwidth())
-      .attr('height', (d: any) => height - y(d.submissions));
+  updateSelected(dif: Difficulty) {
+    this.selectedDifficulty = dif;
   }
 }

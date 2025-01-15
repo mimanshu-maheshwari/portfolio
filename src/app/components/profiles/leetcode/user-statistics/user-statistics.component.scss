@@ -1,0 +1,33 @@
+.chart {
+  max-width: 25em;
+}
+
+.selectors {
+  max-width: 25em;
+}
+
+.label-card {
+  &.green {
+    border-color: green;
+
+    &:hover {
+      background-color: green;
+    }
+  }
+
+  .red {
+    border-color: red;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+
+  .orange {
+    border-color: orange;
+
+    &:hover {
+      background-color: orange;
+    }
+  }
+}
