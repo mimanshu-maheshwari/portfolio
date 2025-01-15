@@ -1,0 +1,10 @@
+.submissions {
+    display: flex;
+    overflow: auto;
+    align-items: stretch;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-height: 25em;
+    gap: 0.5em;
+}

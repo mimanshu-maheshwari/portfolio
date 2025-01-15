@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs';
-import { GET_PROFILE } from '../models/graphql-queries/leetcode-profile.gql';
 import { CONTEST } from '../models/graphql-queries/contest.gql';
 import { DAILY_PROBLEM } from '../models/graphql-queries/daily-problem.gql';
 import { LANGUAGE_STATS } from '../models/graphql-queries/language-stats.gql';
+import { GET_PROFILE } from '../models/graphql-queries/leetcode-profile.gql';
+import { UserData } from '../models/leetcode-user-profile.model';
+import { ApolloQueryResult } from '@apollo/client/core';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +14,8 @@ import { LANGUAGE_STATS } from '../models/graphql-queries/language-stats.gql';
 export class LeetcodeService {
   constructor(private readonly apollo: Apollo) {}
 
-  getProfile(username: string): Observable<any> {
-    return this.apollo.watchQuery<any>({
+  getProfile(username: string): Observable<ApolloQueryResult<UserData>> {
+    return this.apollo.watchQuery<UserData>({
       query: GET_PROFILE,
       variables: { username },
     }).valueChanges;

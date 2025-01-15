@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatchedUser } from '../../../models/leetcode-user-profile.model';
+import { Component, inject, OnInit } from '@angular/core';
+import { MatchedUser, Submission } from '../../../models/leetcode-user-profile.model';
 import { LeetcodeService } from '../../../services/leetcode.service';
 
 @Component({
@@ -13,8 +13,8 @@ export class LeetcodeComponent implements OnInit {
   calendarData!: any;
   stats!: any;
   profile!: any;
-
-  constructor(private leetcodeService: LeetcodeService) {}
+  recentSubmissions!: Array<Submission>;
+  private leetcodeService: LeetcodeService = inject(LeetcodeService);
 
   ngOnInit(): void {
     this.leetcodeService.getProfile('mimanshu-maheshwari').subscribe(({ data, loading }) => {
@@ -22,6 +22,7 @@ export class LeetcodeComponent implements OnInit {
       this.calendarData = this.userData.submissionCalendar;
       this.stats = this.userData.submitStats;
       this.profile = this.userData.profile;
+      this.recentSubmissions = data.recentSubmissionList;
       console.log('check::keys', Object.keys(data));
       console.log('check::data', data);
     });

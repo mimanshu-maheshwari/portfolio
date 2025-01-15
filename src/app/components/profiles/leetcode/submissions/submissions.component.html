@@ -1,1 +1,11 @@
-<p>submissions works!</p>
+@for (recentSubmission of recentSubmissions; track $index) {
+<mat-card appearance="outlined" class="submission-card">
+    <mat-card-content>{{recentSubmission.title}}</mat-card-content>
+    <mat-card-footer style="padding: 1em;">
+        <mat-chip-set aria-label="Not Chihuahua traits">
+            <mat-chip>{{recentSubmission.lang}}</mat-chip>
+            <mat-chip>{{(recentSubmission.timestamp * 1000) | date }}</mat-chip>
+        </mat-chip-set>
+    </mat-card-footer>
+</mat-card>
+}

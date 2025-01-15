@@ -10,9 +10,8 @@
         </div>
     </mat-tab>
     <mat-tab label="Submissions">
-        <div class="">
-            <!-- <app-heatmap [submissionCalendar]="calendarData" /> -->
-            <app-submissions />
+        <div style="margin-top: 1em;">
+            <app-submissions [recent-submissions]="recentSubmissions" class="submissions" />
         </div>
     </mat-tab>
 </mat-tab-group>

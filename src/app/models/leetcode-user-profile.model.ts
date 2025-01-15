@@ -111,7 +111,7 @@ export interface ProblemSetQuestionListData {
 export interface Submission {
   title: string;
   titleSlug: string;
-  timestamp: string;
+  timestamp: number;
   statusDisplay: string;
   lang: string;
 }
