@@ -23,7 +23,6 @@ export class AboutComponent implements OnInit, OnDestroy {
   private typewriterService = inject(TypewriterService);
   whoami$!: Subscription;
   whoamiText: string = '207 Multi-Status';
-  //  implements OnInit, AfterViewInit {
   whoamiChips: Array<string> = [
     '207 Multi-Status',
     'Fullstack Developer',

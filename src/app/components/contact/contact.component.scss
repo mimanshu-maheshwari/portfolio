@@ -1,0 +1,53 @@
+.name-card {
+  margin: 1em;
+  max-width: 40vw;
+
+  img {
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: inherit;
+    margin: 1em;
+    height: 40em;
+  }
+}
+
+.name-header-image {
+  // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  // background-image: url('./image/profile_image2.jpg');
+  background-size: cover;
+}
+
+
+
+.dynamic-text {
+  border-right: 2px solid #00FF00;
+  padding-right: 5px;
+  animation: blink-caret 0.7s step-end infinite;
+  color: #00FF00;
+}
+
+#dynamic-text {
+  border-right: 2px solid #00FF00;
+  padding-right: 5px;
+  animation: blink-caret 0.7s step-end infinite;
+  color: #00FF00;
+}
+
+.contect-content {
+  font-size: x-large;
+
+  & a {
+    text-decoration: none;
+    color: var();
+  }
+}
+
+.resume-card {
+  min-height: 50em;
+
+  & .resume-card-content {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+}

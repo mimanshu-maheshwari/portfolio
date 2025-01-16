@@ -19,7 +19,12 @@
     "module": "ES2022",
     "lib": ["ES2022", "dom"],
     "allowSyntheticDefaultImports": true,
-    "typeRoots": ["node_modules/@types", "node_modules/@angular", "node_modules/@angular/material"]
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@angular",
+      "node_modules/@angular/material",
+      "node_modules/@fontawesome"
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

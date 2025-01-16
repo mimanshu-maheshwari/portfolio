@@ -1,1 +1,44 @@
-<p>contact works!</p>
+<div class="container justify-content-center">
+  <mat-card class="name-card" appearance="outlined" class="w-100">
+    <mat-card-header>
+      <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + avatarImage + ')'}" class="name-header-image">
+      </div>
+      <mat-card-title>Mimanshu Maheshwari</mat-card-title>
+      <mat-card-subtitle>
+        <span>I'm &nbsp;</span><span class="dynamic-text">{{ whoamiText}}</span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="contect-content text-lg-center">
+        Find me on &nbsp;
+        <a title="LinkedIn" href="https://www.linkedin.com/in/mimanshu-maheshwari/" target="_blank">
+          <fa-icon [icon]="['fab', 'linkedin']"></fa-icon>
+        </a> &nbsp;
+        <a title="GitHub" href="https://github.com/mimanshu-maheshwari/" target="_blank">
+          <fa-icon [icon]="['fab', 'github']"></fa-icon>
+        </a> &nbsp;
+        <a title="Medium" href="https://medium.com/@mimanshumaheshwari" target="_blank">
+          <fa-icon [icon]="['fab', 'medium']"></fa-icon>
+        </a> &nbsp;
+        <a title="Instagram" href="https://www.instagram.com/mimanshumaheshwari/" target="_blank">
+          <fa-icon [icon]="['fab', 'instagram']"></fa-icon>
+        </a> &nbsp;
+        <a title="Gmail" href="mailto:maheshwarimimanshu@gmail.com" target="_blank">
+          <fa-icon [icon]="['fab', 'google']"></fa-icon>
+        </a> &nbsp;
+        <a title="Outlook" href="mailto:mimanshumaheshwari@gmail.com" target="_blank">
+          <fa-icon [icon]="['fab', 'microsoft']"></fa-icon>
+        </a> &nbsp;
+      </div>
+    </mat-card-content>
+    <!-- <img mat-card-image src="./image/profile_image2.jpg" alt="Not a Photo of a Shiba Inu"> -->
+  </mat-card>
+  <mat-card class="resume-card">
+    <mat-card-header>
+      Resume
+    </mat-card-header>
+    <mat-card-content class="resume-card-content">
+      <embed src="/pdf/Mimanshu_Maheshwari_Resume.pdf" width="800px" height="1100px" />
+    </mat-card-content>
+  </mat-card>
+</div>
