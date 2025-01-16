@@ -2,6 +2,8 @@ import { Component, Output, EventEmitter, Input, inject } from '@angular/core';
 import { HeaderLink } from '../../../models/header-link.model';
 import { ActivatedRoute } from '@angular/router';
 import { Theme, ThemeService } from '../../../services/theme.service';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-header',

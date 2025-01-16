@@ -1,13 +1,13 @@
 <mat-toolbar color="primary">
   <div class="d-md-none d-lg-none d-xxxl-none d-xxl-none d-xl-none">
     <button mat-icon-button (click)="onToggleSidenav()">
-      <mat-icon>Menu</mat-icon>
+      <mat-icon>menu</mat-icon>
     </button>
   </div>
   <div class="ms-auto d-none d-sm-none d-lg-flex d-md-flex d-xl-flex d-xxl-flex">
-    <ul ngbNav [activeId]="route.fragment | async" class="navigation-items nav-tabs">
+    <ul ngbNav #nav="ngbNav" [activeId]="route.params | async" class="navigation-items nav-tabs">
       @for (link of links; track link) {
-      <li class="text-center nav-item" [ngbNavItem]="link.fragment">
+      <li class="text-center nav-item" [ngbNavItem]="link.link">
         <a class="d-flex align-items-center gap-2 nav-link" ngbNavLink [routerLink]="link.link">
           <mat-icon aria-hidden="false" aria-label="icon" [fontIcon]="link.icon || ''" />
           {{ link.title }}
