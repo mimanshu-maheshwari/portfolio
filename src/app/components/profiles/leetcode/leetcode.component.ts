@@ -27,9 +27,6 @@ export class LeetcodeComponent implements OnInit {
 
   ngOnInit(): void {
     this.leetcodeService.getProfile('mimanshu-maheshwari').subscribe(({ data, loading }) => {
-      // remove
-      console.debug('check::data', data);
-
       // done
       this.userData = data.matchedUser;
       this.recentSubmissions = data.recentSubmissionList;
