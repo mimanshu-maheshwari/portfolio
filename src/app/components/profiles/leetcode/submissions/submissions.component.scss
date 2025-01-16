@@ -1,4 +1,13 @@
 .submission-card {
-    flex: 0 0 auto;
-    width: 49%;
+  flex: 0 0 auto;
+  width: 49%;
+}
+
+a {
+  color: var(--mdc-chip-label-text-color, var(--mat-sys-on-surface-variant));
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

@@ -2,8 +2,8 @@
 <div class="container-fluid">
   <div class="row">
 
-    <mat-card class="col">
-      <mat-card-content class="d-flex gap-1 flex-column">
+    <mat-card class="col justify-content-center">
+      <mat-card-content class="label-wrapper">
         <mat-card class="label-card green" style="border-color: green;" (mouseover)="updateSelected(labels[1])"
           (mouseout)="updateSelected(labels[0])" [appearance]="selectedDifficulty === 'Easy'? 'raised': 'outlined'">
           <mat-card-content>
@@ -37,7 +37,7 @@
     </mat-card>
 
     <mat-card class="col">
-      <mat-card-content>
+      <mat-card-content class="chart-wrapper">
         <div class="chart">
           @if (selectedDifficulty === 'All') {
           <app-pie-chart [pieChartData]="solvedQuestionCount" />

@@ -1,19 +1,19 @@
-  .profile-container {
-    text-align: center;
-    padding: 20px;
-  }
+.profile-container {
+  text-align: center;
+  padding: 20px;
+}
 
-  .profile-avatar {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-  }
+.profile-avatar {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
 
-  a {
-    color: var(--mdc-chip-label-text-color, var(--mat-sys-on-surface-variant));
-    text-decoration: none;
+a {
+  color: var(--mdc-chip-label-text-color, var(--mat-sys-on-surface-variant));
+  text-decoration: none;
 
-    &:hover {
-      cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
   }
+}
