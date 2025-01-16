@@ -2,21 +2,26 @@
 <ngb-carousel>
   @for (publication of publications; track $index) {
   <ng-template ngbSlide>
-    <div class="picsum-img-wrapper">
-      <!-- <img [src]="images[0]" alt="Random first slide" /> -->
-      <a [href]="publication.link" target="_blank">
-        <img [src]="publication.img" class="publication-image" [alt]="publication.heading" />
-      </a>
-    </div>
-    <div class="carousel-caption">
-      <a [href]="publication.link" target="_blank">
-        <h3>
-          {{publication.heading}}
-        </h3>
+    <mat-card appearance="raised">
 
-      </a>
-      <p>{{publication.detail}}</p>
-    </div>
+      <mat-card-header>
+
+        <div class="carousel-caption">
+          <a [href]="publication.link" target="_blank">
+            <h3>
+              {{publication.heading}}
+            </h3>
+          </a>
+          <p>{{publication.detail}}</p>
+        </div>
+      </mat-card-header>
+      <div class="picsum-img-wrapper">
+        <!-- <img [src]="images[0]" alt="Random first slide" /> -->
+        <a [href]="publication.link" target="_blank">
+          <img [src]="publication.img" class="publication-image" [alt]="publication.heading" />
+        </a>
+      </div>
+    </mat-card>
   </ng-template>
   }
 </ngb-carousel>
