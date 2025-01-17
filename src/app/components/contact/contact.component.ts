@@ -55,7 +55,6 @@ export class ContactComponent {
   constructor(library: FaIconLibrary) {
     const state = this.location.getState() as any;
     this.aboutMe = state.aboutMe;
-    console.log(this.aboutMe);
     library.addIcons(
       faGithub,
       faMedium,

@@ -96,7 +96,8 @@
     </mat-card-header>
     <mat-card-content class="resume-card-content">
       <!-- <embed src="./pdf/Mimanshu_Maheshwari_Resume.pdf" width="800px" height="1100px" /> -->
-      <object [data]="('./pdf/' + aboutMe.resume) | safeUrl" type="application/pdf" width="800px" height="1100px">
+      <object [data]="('./pdf/' + aboutMe.resume) | safeUrl:'resource'" type="application/pdf" width="800px"
+        height="1100px">
         <p>Your web browser doesn't have a PDF plugin.
           Instead you can <a [href]="('./pdf/' + aboutMe.resume) | safeUrl">click here to
             download the PDF file.</a></p>
