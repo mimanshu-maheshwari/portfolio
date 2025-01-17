@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -12,6 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
@@ -28,6 +30,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     MatSliderModule,
     MatTabsModule,
+    MatTooltipModule,
+    MatBottomSheetModule,
   ],
   exports: [
     MatToolbarModule,
@@ -43,6 +47,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     MatSliderModule,
     MatTabsModule,
+    MatTooltipModule,
+    MatBottomSheetModule,
   ],
 })
 export class MaterialModule {}
