@@ -40,6 +40,7 @@ import { MaterialModule } from './modules/material.module';
 import { KebabcasePipe } from './pipes/kebabcase.pipe';
 import { SnakecasePipe } from './pipes/snakecase.pipe';
 import { ThemeService } from './services/theme.service';
+import { AboutService } from './services/about.service';
 
 @NgModule({
   declarations: [
@@ -93,8 +94,9 @@ import { ThemeService } from './services/theme.service';
         cache: new InMemoryCache(),
       };
     }),
-    ThemeService,
     provideCharts(withDefaultRegisterables()),
+    ThemeService,
+    AboutService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

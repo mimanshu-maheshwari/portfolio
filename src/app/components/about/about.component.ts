@@ -1,16 +1,8 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  inject,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { map, Subscription } from 'rxjs';
+import { AboutMe } from '../../models/about-me.model';
 import { TypewriterService } from '../../services/typewriter.service';
-import { map, Observable, Subscription } from 'rxjs';
-import { MatCardAvatar } from '@angular/material/card';
-import { TemplateEntity } from '@angular/compiler';
+import { AboutService } from '../../services/about.service';
 
 @Component({
   selector: 'app-about',
@@ -21,6 +13,7 @@ import { TemplateEntity } from '@angular/compiler';
 })
 export class AboutComponent implements OnInit, OnDestroy {
   private typewriterService = inject(TypewriterService);
+  private aboutMe!: AboutMe;
   whoami$!: Subscription;
   whoamiText: string = '207 Multi-Status';
   whoamiChips: Array<string> = [
@@ -38,23 +31,34 @@ export class AboutComponent implements OnInit, OnDestroy {
     'Generative AI Enthusiast',
     'Rustacean',
   ];
-  currentPhraseIndex: number = 0;
-  currentCharIndex: number = 0;
-  isDeleting: boolean = false;
-  typingSpeed: number = 100;
-  deletingSpeed: number = 50;
-  delayBetweenPhrases: number = 1000;
-  options = {
-    strings: this.whoamiChips,
-    typeSpeed: this.typingSpeed,
-    backSpeed: this.deletingSpeed,
-    showCursor: true,
-    cursorChar: '|',
-    loop: true,
-  };
+
+  // currentPhraseIndex: number = 0;
+  // currentCharIndex: number = 0;
+  // isDeleting: boolean = false;
+  // typingSpeed: number = 100;
+  // deletingSpeed: number = 50;
+  // delayBetweenPhrases: number = 1000;
+  // options = {
+  //   strings: this.whoamiChips,
+  //   typeSpeed: this.typingSpeed,
+  //   backSpeed: this.deletingSpeed,
+  //   showCursor: true,
+  //   cursorChar: '|',
+  //   loop: true,
+  // };
   avatarImage = './image/profile_image3.jpg';
 
+  private aboutService = inject(AboutService);
+
   ngOnInit(): void {
+    this.aboutService.getAboutMeDetails().subscribe({
+      next: (aboutMe) => {
+        this.aboutMe = aboutMe;
+        console.debug(this.aboutMe);
+      },
+      error: (err) => console.error(err),
+      complete: () => console.log('completed about me'),
+    });
     this.whoami$ = this.typewriterService
       .getTypewriterEffect(this.whoamiChips)
       .pipe(map((text) => text))
