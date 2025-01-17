@@ -22,37 +22,40 @@
 
       @if (tagProblemCounts) {
       @if (tagProblemCounts.fundamental.length) {
-      <mat-chip-set aria-label="Fish selection">
+      <h3>Fundamental Concepts</h3>
+      <mat-chip-set aria-label="fundamental">
         @for (fundamental of tagProblemCounts.fundamental; track $index) {
         <mat-chip>
-          <a [href]="'https://leetcode.com/problem-list/' + fundamental.tagSlug">
-            {{fundamental.tagName}}
-          </a> X {{fundamental.problemsSolved}}
+          <a [href]="'https://leetcode.com/problem-list/' + fundamental.tagSlug" target="_blank">
+            {{fundamental.tagName}} X {{fundamental.problemsSolved}}
+          </a>
         </mat-chip>
         }
       </mat-chip-set>
       }
       <hr>
-      @if (tagProblemCounts.intermediate.length) {
 
-      <mat-chip-set aria-label="Fish selection">
+      @if (tagProblemCounts.intermediate.length) {
+      <h3>Intermediate Concepts</h3>
+      <mat-chip-set aria-label="intermediate">
         @for (interm of tagProblemCounts.intermediate; track $index) {
         <mat-chip>
-          <a [href]="'https://leetcode.com/problem-list/' + interm.tagSlug">
-            {{interm.tagName}}
-          </a> X {{interm.problemsSolved}}
+          <a [href]="'https://leetcode.com/problem-list/' + interm.tagSlug" target="_blank">
+            {{interm.tagName}} X {{interm.problemsSolved}}
+          </a>
         </mat-chip>
         }
       </mat-chip-set>
       }
       <hr>
       @if (tagProblemCounts.advanced.length) {
-      <mat-chip-set aria-label="Fish selection">
+      <h3>Advanced Concepts</h3>
+      <mat-chip-set aria-label="Advanced">
         @for (adv of tagProblemCounts.advanced; track $index) {
         <mat-chip>
-          <a [href]="'https://leetcode.com/problem-list/' + adv.tagSlug">
-            {{adv.tagName}}
-          </a> X {{adv.problemsSolved}}
+          <a [href]="'https://leetcode.com/problem-list/' + adv.tagSlug" target="_blank">
+            {{adv.tagName}} X {{adv.problemsSolved}}
+          </a>
         </mat-chip>
         }
       </mat-chip-set>
