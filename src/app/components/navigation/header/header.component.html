@@ -7,12 +7,14 @@
   <div class="ms-auto d-none d-sm-none d-lg-flex d-md-flex d-xl-flex d-xxl-flex">
     <ul ngbNav #nav="ngbNav" [activeId]="route.params | async" class="navigation-items nav-tabs">
       @for (link of links; track link) {
+      @if (!link.hidden) {
       <li class="text-center nav-item" [ngbNavItem]="link.link">
-        <a class="d-flex align-items-center gap-2 nav-link" ngbNavLink [routerLink]="link.link">
+        <a class="d-flex align-items-center gap-2 nav-link" ngbNavLink [state]="{aboutMe}" [routerLink]="link.link">
           <mat-icon aria-hidden="false" aria-label="icon" [fontIcon]="link.icon || ''" />
           {{ link.title }}
         </a>
       </li>
+      }
       }
     </ul>
   </div>

@@ -1,6 +1,6 @@
 <div class="container-fluid">
-  <div class="row align-items-center">
-    <div class="col">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-6">
       @if (profile) {
       <div class="profile-container">
         @if (profile.userAvatar) {
@@ -18,48 +18,50 @@
       </div>
       }
     </div>
-    <div class="col" style="max-height: 30em; overflow: auto;">
-
+    <div class="col-sm-12 col-md-6 col-lg-6">
       @if (tagProblemCounts) {
-      @if (tagProblemCounts.fundamental.length) {
-      <h3>Fundamental Concepts</h3>
-      <mat-chip-set aria-label="fundamental">
-        @for (fundamental of tagProblemCounts.fundamental; track $index) {
-        <mat-chip>
-          <a [href]="'https://leetcode.com/problem-list/' + fundamental.tagSlug" target="_blank">
-            {{fundamental.tagName}} X {{fundamental.problemsSolved}}
-          </a>
-        </mat-chip>
+      <mat-tab-group>
+        @if (tagProblemCounts.fundamental.length) {
+        <mat-tab label="Fundamental Concepts">
+          <mat-chip-set aria-label="fundamental">
+            @for (fundamental of tagProblemCounts.fundamental; track $index) {
+            <mat-chip>
+              <a [href]="'https://leetcode.com/problem-list/' + fundamental.tagSlug" target="_blank">
+                {{fundamental.tagName}} X {{fundamental.problemsSolved}}
+              </a>
+            </mat-chip>
+            }
+          </mat-chip-set>
+        </mat-tab>
         }
-      </mat-chip-set>
-      }
-      <hr>
 
-      @if (tagProblemCounts.intermediate.length) {
-      <h3>Intermediate Concepts</h3>
-      <mat-chip-set aria-label="intermediate">
-        @for (interm of tagProblemCounts.intermediate; track $index) {
-        <mat-chip>
-          <a [href]="'https://leetcode.com/problem-list/' + interm.tagSlug" target="_blank">
-            {{interm.tagName}} X {{interm.problemsSolved}}
-          </a>
-        </mat-chip>
+        @if (tagProblemCounts.intermediate.length) {
+        <mat-tab label="Intermediate Concepts">
+          <mat-chip-set aria-label="intermediate">
+            @for (interm of tagProblemCounts.intermediate; track $index) {
+            <mat-chip>
+              <a [href]="'https://leetcode.com/problem-list/' + interm.tagSlug" target="_blank">
+                {{interm.tagName}} X {{interm.problemsSolved}}
+              </a>
+            </mat-chip>
+            }
+          </mat-chip-set>
+        </mat-tab>
         }
-      </mat-chip-set>
-      }
-      <hr>
-      @if (tagProblemCounts.advanced.length) {
-      <h3>Advanced Concepts</h3>
-      <mat-chip-set aria-label="Advanced">
-        @for (adv of tagProblemCounts.advanced; track $index) {
-        <mat-chip>
-          <a [href]="'https://leetcode.com/problem-list/' + adv.tagSlug" target="_blank">
-            {{adv.tagName}} X {{adv.problemsSolved}}
-          </a>
-        </mat-chip>
+        @if (tagProblemCounts.advanced.length) {
+        <mat-tab label="Advanced Concepts">
+          <mat-chip-set aria-label="Advanced">
+            @for (adv of tagProblemCounts.advanced; track $index) {
+            <mat-chip>
+              <a [href]="'https://leetcode.com/problem-list/' + adv.tagSlug" target="_blank">
+                {{adv.tagName}} X {{adv.problemsSolved}}
+              </a>
+            </mat-chip>
+            }
+          </mat-chip-set>
+        </mat-tab>
         }
-      </mat-chip-set>
-      }
+      </mat-tab-group>
       }
     </div>
   </div>

@@ -1,8 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { map, Subscription } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 import { AboutMe } from '../../models/about-me.model';
 import { TypewriterService } from '../../services/typewriter.service';
-import { AboutService } from '../../services/about.service';
 
 @Component({
   selector: 'app-about',
@@ -12,60 +12,43 @@ import { AboutService } from '../../services/about.service';
   styleUrl: './about.component.scss',
 })
 export class AboutComponent implements OnInit, OnDestroy {
+  aboutMe!: AboutMe;
+  whoami$!: Observable<string>;
+
   private typewriterService = inject(TypewriterService);
-  private aboutMe!: AboutMe;
-  whoami$!: Subscription;
-  whoamiText: string = '207 Multi-Status';
-  whoamiChips: Array<string> = [
-    '207 Multi-Status',
-    'Fullstack Developer',
-    'Team Player',
-    'Software Developer',
-    "418 I'm a teapot",
-    'Frontend Engineer',
-    '422 Unprocessable Content',
-    'Backend Engineer',
-    'Software Engineer',
-    'Code Enthusiast',
-    // '226 IM Used',
-    'Generative AI Enthusiast',
-    'Rustacean',
-  ];
-
-  // currentPhraseIndex: number = 0;
-  // currentCharIndex: number = 0;
-  // isDeleting: boolean = false;
-  // typingSpeed: number = 100;
-  // deletingSpeed: number = 50;
-  // delayBetweenPhrases: number = 1000;
-  // options = {
-  //   strings: this.whoamiChips,
-  //   typeSpeed: this.typingSpeed,
-  //   backSpeed: this.deletingSpeed,
-  //   showCursor: true,
-  //   cursorChar: '|',
-  //   loop: true,
-  // };
-  avatarImage = './image/profile_image3.jpg';
-
-  private aboutService = inject(AboutService);
+  private unsubscribeAll$: Subject<void> = new Subject();
+  private location: Location = inject(Location);
 
   ngOnInit(): void {
-    this.aboutService.getAboutMeDetails().subscribe({
-      next: (aboutMe) => {
-        this.aboutMe = aboutMe;
-        console.debug(this.aboutMe);
-      },
-      error: (err) => console.error(err),
-      complete: () => console.log('completed about me'),
-    });
+    const state = this.location.getState() as any;
+    this.aboutMe = state.aboutMe;
+    this.unsubscribeAll$ = new Subject();
     this.whoami$ = this.typewriterService
-      .getTypewriterEffect(this.whoamiChips)
-      .pipe(map((text) => text))
-      .subscribe({ next: (val) => (this.whoamiText = val) });
+      .getTypewriterEffect(this.aboutMe.whoamiChips)
+      .pipe(takeUntil(this.unsubscribeAll$));
+  }
+
+  isString(value: any) {
+    return typeof value === 'string';
   }
 
   ngOnDestroy(): void {
-    this.whoami$.unsubscribe();
+    let val = '';
+    this.unsubscribeAll$.next();
   }
 }
+
+// currentPhraseIndex: number = 0;
+// currentCharIndex: number = 0;
+// isDeleting: boolean = false;
+// typingSpeed: number = 100;
+// deletingSpeed: number = 50;
+// delayBetweenPhrases: number = 1000;
+// options = {
+//   strings: this.whoamiChips,
+//   typeSpeed: this.typingSpeed,
+//   backSpeed: this.deletingSpeed,
+//   showCursor: true,
+//   cursorChar: '|',
+//   loop: true,
+// };

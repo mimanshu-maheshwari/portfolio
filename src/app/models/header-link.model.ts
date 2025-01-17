@@ -3,4 +3,5 @@ export interface HeaderLink {
   title: string;
   fragment: string;
   link: string;
+  hidden?: boolean;
 }

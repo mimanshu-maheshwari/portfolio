@@ -1,192 +1,65 @@
 <div class="container">
+  @if (aboutMe) {
   <div class="row">
     <div class="col-lg-6 col-sm-12">
       <mat-card class="name-card" appearance="outlined">
         <mat-card-header>
-          <mat-card-title>Mimanshu Maheshwari</mat-card-title>
-          <mat-card-subtitle>Full-Stack Developer</mat-card-subtitle>
+          <mat-card-title>
+            <span>{{aboutMe.firstName}}</span>
+            @if(aboutMe.middleName) {<span>&nbsp;{{aboutMe.middleName}}</span>}
+            <span>&nbsp;{{aboutMe.lastName}}</span>
+          </mat-card-title>
+          <mat-card-subtitle> {{aboutMe.designation}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="./image/profile_image2.jpg" alt="Not a Photo of a Shiba Inu">
+        <img mat-card-image [src]="'./image/' + aboutMe.profileImage" [alt]="aboutMe.profileImage">
       </mat-card>
     </div>
     <div class="col-lg-6 col-sm-12">
       <mat-card class="detail-card" appearance="outlined">
         <mat-card-header>
-          <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + avatarImage + ')'}" class="name-header-image">
+          <div mat-card-avatar [ngStyle]="{'background-image': 'url(./image/' + aboutMe.avatarImage + ')'}"
+            class="name-header-image">
           </div>
-          <mat-card-title>$ whoami</mat-card-title>
+          <mat-card-title><code>$ whoami</code></mat-card-title>
           <mat-card-subtitle>
-            <!-- <span>I'm &nbsp;</span><span id="dynamic-text">{{ whoamiText }}</span> -->
-            <span>I'm &nbsp;</span><span class="dynamic-text">{{ whoamiText}}</span>
+            <span>I'm &nbsp;</span><span class="dynamic-text">{{ whoami$ | async }}</span>
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="detail-card-content">
           <mat-accordion class="detail-card-content-headers-align" multi>
+            @for (detail of aboutMe.details; track $index) {
             <mat-expansion-panel>
               <mat-expansion-panel-header>
-                <mat-panel-title>
-                  About Me
-                </mat-panel-title>
+                <mat-panel-title>{{detail.label}}</mat-panel-title>
                 <mat-panel-description>
-                  <mat-icon></mat-icon>
+                  {{detail.description}}
                 </mat-panel-description>
               </mat-expansion-panel-header>
+              @if (detail.details.length) {
+              @for (subDetail of detail.details; track $index) {
+              @if (isString(subDetail)) {
               <p>
-                I am a Full-Stack Developer with 4 years of hands-on experience in building scalable,
-                efficient, and user-focused applications. My expertise spans a wide array of
-                technologies, enabling me to design and deliver solutions that address both technical
-                challenges and user needs. From crafting intuitive front-end interfaces to implementing
-                robust back-end systems, I thrive in environments where innovation and collaboration are
-                at the forefront.
+                {{subDetail}}
               </p>
+              } @else {
+              <h6>{{subDetail.title}}</h6>
+              <p>{{subDetail.detail}}</p>
+              <!-- <mat-list>
+                <mat-list-item lines="3" [title]="subDetail.detail">
+                  <span matListItemTitle> {{subDetail.title}} </span>
+                  {{subDetail.detail}}
+                </mat-list-item>
+              </mat-list> -->
+              }
+              }
+              }
             </mat-expansion-panel>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Technical Expertise
-                </mat-panel-title>
-                <mat-panel-description>
-                  <!-- <mat-icon>devices</mat-icon> -->
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <mat-list>
-                <mat-list-item lines="3" title="I specialize in back-end development with Rust and Java Spring, leveraging these
-                    technologies to create high-performance, secure, and maintainable systems. My
-                    experience includes designing and optimizing microservices architectures,
-                    implementing REST APIs, and ensuring seamless communication across distributed
-                    systems.">
-                  <span matListItemTitle>Back-End Development</span>
-                  I specialize in back-end development with Rust and Java Spring, leveraging these
-                  technologies to create high-performance, secure, and maintainable systems. My
-                  experience includes designing and optimizing microservices architectures,
-                  implementing REST APIs, and ensuring seamless communication across distributed
-                  systems.
-                </mat-list-item>
-                <mat-list-item lines="3">
-                  <span matListItemTitle>Front-End Development</span>
-                  With a strong command of Angular, I build dynamic, responsive, and user-friendly web
-                  applications. My attention to detail ensures that users have an engaging and
-                  seamless experience.
-                </mat-list-item>
-                <mat-list-item lines="3">
-                  <span matListItemTitle>Distributed Systems</span>
-                  I have worked extensively with Kafka and Hibernate, gaining expertise in designing
-                  systems that handle high-throughput and real-time data processing.
-                </mat-list-item>
-                <mat-list-item lines="3">
-                  <span matListItemTitle>Cloud Deployment</span>
-                  My experience in cloud-based deployments ensures that applications are scalable,
-                  resilient, and optimized for performance in production environments.
-                </mat-list-item>
-                <mat-list-item lines="3">
-                  <span matListItemTitle>Generative AI Integration</span>
-                  I have successfully integrated Generative AI solutions into existing systems to
-                  enhance functionality, improve decision-making, and drive innovation.
-                </mat-list-item>
-              </mat-list>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Key Strengths
-                </mat-panel-title>
-                <mat-panel-description>
-                  <!-- <mat-icon fontIcon="empty_dashboard">empty_dashboard</mat-icon> -->
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <mat-list>
-                <mat-list-item lines="3" title="I excel in breaking down complex challenges into manageable solutions. Whether
-                  optimizing system performance or troubleshooting critical issues, I approach
-                  problems with analytical precision and creativity.">
-                  <span matListItemTitle>Problem Solving</span>
-                  I excel in breaking down complex challenges into manageable solutions. Whether
-                  optimizing system performance or troubleshooting critical issues, I approach
-                  problems with analytical precision and creativity.
-                </mat-list-item>
-                <mat-list-item lines="3">
-                  <span matListItemTitle>Comprehensive Development</span>
-                  My proficiency in both front-end and back-end development allows me to bridge the
-                  gap between design and functionality, ensuring cohesive application development from
-                  start to finish.
-                </mat-list-item>
-                <mat-list-item lines="3">
-                  <span matListItemTitle>Scalability and Performance</span>
-                  I am passionate about building systems that can scale seamlessly to meet growing
-                  demands while maintaining optimal performance and usability.
-                </mat-list-item>
-              </mat-list>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Accomplishments
-                </mat-panel-title>
-                <mat-panel-description>
-                  <!-- <mat-icon>social_leaderboard</mat-icon> -->
-                  <!-- <mat-icon>trophy</mat-icon> -->
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <mat-list>
-                <mat-list-item lines="3">
-                  Designed and implemented scalable microservices architectures, significantly
-                  improving system reliability and reducing downtime.
-                </mat-list-item>
-                <mat-list-item lines="3">
-                  Optimized application performance by integrating Rust into critical workflows,
-                  resulting in measurable improvements in speed and resource utilization.
-                </mat-list-item>
-                <mat-list-item lines="3">
-                  Enhanced user experiences by developing responsive front-end applications using
-                  Angular, aligning them with client and user requirements.
-                </mat-list-item>
-                <mat-list-item lines="3">
-                  Successfully deployed and managed applications on cloud platforms, ensuring seamless
-                  operation and adherence to best practices.
-                </mat-list-item>
-                <mat-list-item lines="3">
-                  Integrated Generative AI solutions into product ecosystems, unlocking new
-                  capabilities and driving innovation in user-facing features.
-                </mat-list-item>
-              </mat-list>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Personal Philosophy
-                </mat-panel-title>
-                <mat-panel-description>
-                  <!-- <mat-icon>cognition</mat-icon> -->
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              I believe in the power of collaboration and continuous learning. Staying updated with the
-              latest technologies and industry trends is at the core of my professional growth. I am
-              committed to delivering solutions that not only meet technical requirements but also create
-              value for users and businesses alike.
-            </mat-expansion-panel>
-
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  What Sets Me Apart?
-                </mat-panel-title>
-                <mat-panel-description>
-                  <!-- <mat-icon>man_4</mat-icon> -->
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              My unique combination of technical depth and user-centric approach positions me as a
-              versatile developer who can deliver results across the development lifecycle. I am driven by
-              the challenge of solving complex problems and the satisfaction of building applications that
-              make a meaningful impact.
-            </mat-expansion-panel>
-
+            }
           </mat-accordion>
         </mat-card-content>
         <mat-card-footer class="detail-card-footer">
           <mat-chip-set aria-label="Not Chihuahua traits">
-            @for (chip of whoamiChips; track $index) {
+            @for (chip of aboutMe.whoamiChips; track $index) {
             <mat-chip>#{{chip | kebabcase}}</mat-chip>
             }
           </mat-chip-set>
@@ -194,4 +67,7 @@
       </mat-card>
     </div>
   </div>
+  } @else {
+  Nothing to know about Me!!!
+  }
 </div>

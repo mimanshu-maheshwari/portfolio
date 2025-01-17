@@ -2,21 +2,98 @@
   "firstName": "Mimanshu",
   "lastName": "Maheshwari",
   "designation": "FullStack Developer",
-  "profileImagePath": "profile_image2.jpg",
-  "avatarImagePath": "profile_image3.jpg",
-  "whoamiChipsText": [
-    "207 Multi-Status",
+  "profileImage": "profile_image2.jpg",
+  "avatarImage": "profile_image3.jpg",
+  "whoamiChips": [
+    "HTTP STATUS CODE 207 | Multi-Status",
     "Fullstack Developer",
     "Team Player",
     "Software Developer",
-    "418 I'm a teapot",
+    "HTTP STATUS CODE 418 | I'm a teapot",
     "Frontend Engineer",
-    "422 Unprocessable Content",
+    "HTTP STATUS CODE 422 | Unprocessable Content",
     "Backend Engineer",
     "Software Engineer",
     "Code Enthusiast",
     "Generative AI Enthusiast",
     "Rustacean"
   ],
-  "details": []
+  "details": [
+    {
+      "label": "About Me",
+      "details": [
+        "I am a Full-Stack Developer with 4 years of hands-on experience in building scalable, efficient, and user-focused applications. My expertise spans a wide array of technologies, enabling me to design and deliver solutions that address both technical challenges and user needs. From crafting intuitive front-end interfaces to implementing robust back-end systems, I thrive in environments where innovation and collaboration are at the forefront."
+      ]
+    },
+    {
+      "label": "Technical Expertise",
+      "details": [
+        {
+          "title": "Back-End Development",
+          "detail": "I specialize in back-end development with Rust and Java Spring, leveraging these technologies to create high-performance, secure, and maintainable systems. My experience includes designing and optimizing microservices architectures, implementing REST APIs, and ensuring seamless communication across distributed systems."
+        },
+        {
+          "title": "Front-End Development",
+          "detail": "With a strong command of Angular, I build dynamic, responsive, and user-friendly web applications. My attention to detail ensures that users have an engaging and seamless experience."
+        },
+        {
+          "title": "Distributed Systems",
+          "detail": "I have worked extensively with Kafka and Hibernate, gaining expertise in designing systems that handle high-throughput and real-time data processing."
+        },
+        {
+          "title": "Cloud Deployment",
+          "detail": "My experience in cloud-based deployments ensures that applications are scalable, resilient, and optimized for performance in production environments."
+        },
+        {
+          "title": "Generative AI Integration",
+          "detail": "I have successfully integrated Generative AI solutions into existing systems to enhance functionality, improve decision-making, and drive innovation."
+        }
+      ]
+    },
+    {
+      "label": "Key Strengths",
+      "details": [
+        {
+          "title": "Problem Solving",
+          "detail": "I excel in breaking down complex challenges into manageable solutions. Whether optimizing system performance or troubleshooting critical issues, I approach problems with analytical precision and creativity."
+        },
+        {
+          "title": "Comprehensive Development",
+          "detail": "My proficiency in both front-end and back-end development allows me to bridge the gap between design and functionality, ensuring cohesive application development from start to finish."
+        },
+        {
+          "title": "Scalability and Performance",
+          "detail": "I am passionate about building systems that can scale seamlessly to meet growing demands while maintaining optimal performance and usability."
+        }
+      ]
+    },
+    {
+      "label": "Accomplishments",
+      "details": [
+        "Designed and implemented scalable microservices architectures, significantly improving system reliability and reducing downtime.",
+        "Optimized application performance by integrating Rust into critical workflows, resulting in measurable improvements in speed and resource utilization.",
+        "Enhanced user experiences by developing responsive front-end applications using Angular, aligning them with client and user requirements.",
+        "Successfully deployed and managed applications on cloud platforms, ensuring seamless operation and adherence to best practices.",
+        "Integrated Generative AI solutions into product ecosystems, unlocking new capabilities and driving innovation in user-facing features."
+      ]
+    },
+    {
+      "label": "Personal Philosophy",
+      "details": [
+        "I believe in the power of collaboration and continuous learning. Staying updated with the latest technologies and industry trends is at the core of my professional growth. I am committed to delivering solutions that not only meet technical requirements but also create value for users and businesses alike."
+      ]
+    },
+    {
+      "label": "What Sets Me Apart?",
+      "details": [
+        "My unique combination of technical depth and user-centric approach positions me as a versatile developer who can deliver results across the development lifecycle. I am driven by the challenge of solving complex problems and the satisfaction of building applications that make a meaningful impact."
+      ]
+    }
+  ],
+  "profiles": [
+    { "type": "leetcode", "username": "mimanshu-maheshwari" },
+    { "type": "instagram", "username": "mimanshumaheshwari" },
+    { "type": "medium", "username": "@mimanshumaheshwari" },
+    { "type": "github", "username": "mimanshu-maheshwari" }
+  ]
 }
