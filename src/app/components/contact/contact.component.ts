@@ -35,23 +35,7 @@ export class ContactComponent {
   private typewriterService = inject(TypewriterService);
   private destroyRef: DestroyRef = inject(DestroyRef);
   whoami$!: Observable<string>;
-  whoamiText: string = '207 Multi-Status';
-  whoamiChips: Array<string> = [
-    '207 Multi-Status',
-    'Fullstack Developer',
-    'Team Player',
-    'Software Developer',
-    "418 I'm a teapot",
-    'Frontend Engineer',
-    '422 Unprocessable Content',
-    'Backend Engineer',
-    'Software Engineer',
-    'Code Enthusiast',
-    // '226 IM Used',
-    'Generative AI Enthusiast',
-    'Rustacean',
-  ];
-  avatarImage = './image/profile_image3.jpg';
+
   constructor(library: FaIconLibrary) {
     const state = this.location.getState() as any;
     this.aboutMe = state.aboutMe;
