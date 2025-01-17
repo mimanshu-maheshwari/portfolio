@@ -9,7 +9,8 @@
       @for (link of links; track link) {
       @if (!link.hidden) {
       <li class="text-center nav-item" [ngbNavItem]="link.link">
-        <a class="d-flex align-items-center gap-2 nav-link" ngbNavLink [state]="{aboutMe}" [routerLink]="link.link">
+        <a class="d-flex align-items-center gap-2 nav-link" ngbNavLink [routerLinkActive]="'active'" [state]="{aboutMe}"
+          [routerLink]="link.link">
           <mat-icon aria-hidden="false" aria-label="icon" [fontIcon]="link.icon || ''" />
           {{ link.title }}
         </a>

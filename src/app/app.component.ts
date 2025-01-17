@@ -51,4 +51,7 @@ export class AppComponent {
       }
     }),
   );
+  isMobile() {
+    return false;
+  }
 }

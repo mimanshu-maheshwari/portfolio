@@ -1,6 +1,6 @@
 @if (aboutMe$ | async; as aboutMe) {
 <mat-sidenav-container>
-  <mat-sidenav #sidenav role="navigation">
+  <mat-sidenav #sidenav role="navigation" [mode]="isMobile() ? 'over' : 'side'" [fixedInViewport]="isMobile()">
     <app-sidenav-list [links]="links" [aboutMe]="aboutMe" (sidenav-close)="sidenav.close()" />
   </mat-sidenav>
 

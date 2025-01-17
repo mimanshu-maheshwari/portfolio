@@ -1,49 +1,110 @@
 <div class="container justify-content-center">
+  @if (aboutMe) {
   <mat-card class="name-card" appearance="outlined" class="w-100">
     <mat-card-header>
-      <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + avatarImage + ')'}" class="name-header-image">
+      <div mat-card-avatar [ngStyle]="{'background-image': 'url(./image/' + aboutMe.avatarImage + ')'}"
+        class="name-header-image">
       </div>
-      <mat-card-title>Mimanshu Maheshwari</mat-card-title>
+      <mat-card-title>
+        <span>{{aboutMe.firstName}}</span>
+        @if(aboutMe.middleName) {<span>&nbsp;{{aboutMe.middleName}}</span>}
+        <span>&nbsp;{{aboutMe.lastName}}</span>
+      </mat-card-title>
       <mat-card-subtitle>
-        <span>I'm &nbsp;</span><span class="dynamic-text">{{ whoamiText}}</span>
+        <span>I'm &nbsp;</span><span class="dynamic-text">{{whoami$ | async}}</span>
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <div class="contect-content text-lg-center">
         Find me on &nbsp;
-        <a title="LinkedIn" href="https://www.linkedin.com/in/mimanshu-maheshwari/" target="_blank">
+        @if(aboutMe.profiles) {
+        @for (profile of aboutMe.profiles; track $index) {
+        @if (profile.type === 'linkedin') {
+        <a title="LinkedIn" [href]="'https://www.linkedin.com/in/' + profile.username" target="_blank">
           <fa-icon [icon]="['fab', 'linkedin']"></fa-icon>
         </a> &nbsp;
-        <a title="GitHub" href="https://github.com/mimanshu-maheshwari/" target="_blank">
+        }
+        @else if (profile.type === 'github') {
+        <a title="GitHub" [href]="'https://github.com/' + profile.username" target="_blank">
           <fa-icon [icon]="['fab', 'github']"></fa-icon>
         </a> &nbsp;
-        <a title="Medium" href="https://medium.com/@mimanshumaheshwari" target="_blank">
+        }
+        @else if (profile.type === 'medium'){
+        <a title="Medium" [href]="'https://medium.com/' + profile.username" target="_blank">
           <fa-icon [icon]="['fab', 'medium']"></fa-icon>
         </a> &nbsp;
-        <a title="Instagram" href="https://www.instagram.com/mimanshumaheshwari/" target="_blank">
+        }
+        @else if (profile.type === 'instagram') {
+        <a title="Instagram" [href]="'https://www.instagram.com/' + profile.username" target="_blank">
           <fa-icon [icon]="['fab', 'instagram']"></fa-icon>
         </a> &nbsp;
-        <a title="Gmail" href="mailto:maheshwarimimanshu@gmail.com" target="_blank">
+        }
+        @else if (profile.type === 'discord') {
+        <a title="Discord" [href]="'https://discord.com/users/' + profile.username" target="_blank">
+          <fa-icon [icon]="['fab', 'discord']"></fa-icon>
+        </a> &nbsp;
+        }
+        @else if (profile.type === 'mastodon') {
+        <a title="Mastodon" [href]="'https://mastodon.social/' + profile.username" target="_blank">
+          <fa-icon [icon]="['fab', 'mastodon']"></fa-icon>
+        </a> &nbsp;
+        }
+        @else if (profile.type === 'leetcode') {
+        <a title="LeetCode" [href]="'https://leetcode.com/u/' + profile.username" target="_blank">
+          <!-- <fa-icon [icon]="['fab', '']"></fa-icon> -->
+          LeetCode
+        </a> &nbsp;
+        }
+        }
+        }
+        @if (aboutMe.contact; as contact) {
+        @if(contact.mails) {
+        @for (mail of contact.mails; track $index) {
+        @if (mail.type?.toLowerCase() === 'gmail') {
+        <a title="Gmail" [href]="'mailto:' + mail.mailId" target="_blank">
           <fa-icon [icon]="['fab', 'google']"></fa-icon>
         </a> &nbsp;
-        <a title="Outlook" href="mailto:mimanshumaheshwari@gmail.com" target="_blank">
+        }
+        @else if (mail.type?.toLowerCase() === 'outlook' || mail.type?.toLowerCase() === 'hotmail') {
+        <a title="Outlook" [href]="'mailto:' + mail.mailId" target="_blank">
           <fa-icon [icon]="['fab', 'microsoft']"></fa-icon>
         </a> &nbsp;
+        } @else {
+        <a [title]="mail.type" [href]="'mailto:' + mail.mailId" target="_blank">
+          <fa-icon [icon]="['fa', 'contact-card']"></fa-icon>
+        </a> &nbsp;
+        }
+        }
+        }
+        @if (contact.numbers; as numbers) {
+        @for (number of numbers; track number) {
+        <a [href]="'tel:' + number">
+          <fa-icon [icon]="['fa', 'phone']"></fa-icon>
+        </a>
+        }
+        }
+        }
+
       </div>
     </mat-card-content>
     <!-- <img mat-card-image src="./image/profile_image2.jpg" alt="Not a Photo of a Shiba Inu"> -->
   </mat-card>
+  @if (aboutMe.resume) {
   <mat-card class="resume-card">
     <mat-card-header>
       Resume
     </mat-card-header>
     <mat-card-content class="resume-card-content">
       <!-- <embed src="./pdf/Mimanshu_Maheshwari_Resume.pdf" width="800px" height="1100px" /> -->
-      <object data="./pdf/resume.pdf" type="application/pdf" width="800px" height="1100px">
+      <object [data]="('./pdf/' + aboutMe.resume) | safeUrl" type="application/pdf" width="800px" height="1100px">
         <p>Your web browser doesn't have a PDF plugin.
-          Instead you can <a href="./pdf/resume.pdf">click here to
+          Instead you can <a [href]="('./pdf/' + aboutMe.resume) | safeUrl">click here to
             download the PDF file.</a></p>
       </object>
     </mat-card-content>
   </mat-card>
+  }
+  } @else {
+  I'm under a rock!!!
+  }
 </div>

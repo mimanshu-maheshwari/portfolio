@@ -1,4 +1,6 @@
-import { APP_BASE_HREF } from '@angular/common';
+import { LayoutModule } from '@angular/cdk/layout';
+import { PlatformModule } from '@angular/cdk/platform';
+import { APP_BASE_HREF, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
   CUSTOM_ELEMENTS_SCHEMA,
@@ -39,8 +41,9 @@ import { PieChartComponent } from './components/shared/charts/pie-chart/pie-char
 import { MaterialModule } from './modules/material.module';
 import { KebabcasePipe } from './pipes/kebabcase.pipe';
 import { SnakecasePipe } from './pipes/snakecase.pipe';
-import { ThemeService } from './services/theme.service';
 import { AboutService } from './services/about.service';
+import { ThemeService } from './services/theme.service';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 @NgModule({
   declarations: [
@@ -62,10 +65,13 @@ import { AboutService } from './services/about.service';
     SubmissionsComponent,
     DoughnutChartComponent,
     PieChartComponent,
+    SafeUrlPipe,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    PlatformModule,
+    LayoutModule,
     MaterialModule,
     AppRoutingModule,
     NgbModule,
@@ -95,6 +101,7 @@ import { AboutService } from './services/about.service';
       };
     }),
     provideCharts(withDefaultRegisterables()),
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
     ThemeService,
     AboutService,
   ],

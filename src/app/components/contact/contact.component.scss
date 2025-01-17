@@ -35,10 +35,17 @@
 
 .contect-content {
   font-size: x-large;
+  color: gray;
 
   & a {
     text-decoration: none;
-    color: var();
+    color: var(--mat-sys-on-surface);
+
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+      font-size: xx-large;
+    }
   }
 }
 

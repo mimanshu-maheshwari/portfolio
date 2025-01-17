@@ -30,7 +30,8 @@ export enum ProfileType {
   INSTAGRAM = 'instagram',
   MEDIUM = 'medium',
   LINKEDIN = 'linkedin',
-  MASTADON = 'mastadon',
+  MASTODON = 'mastodon',
+  DISCORD = 'discord',
 }
 export interface Profile {
   type: ProfileType;
