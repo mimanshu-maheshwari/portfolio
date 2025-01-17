@@ -1,27 +1,25 @@
-@if (publications) {
+@if (publications.length) {
 <ngb-carousel>
-  @for (publication of publications; track $index) {
+  @for (publication of publications; track $index; let pi = $index;) {
   <ng-template ngbSlide>
-    <mat-card appearance="raised">
-
-      <mat-card-header>
-
-        <div class="carousel-caption">
-          <a [href]="publication.link" target="_blank">
-            <h3>
-              {{publication.heading}}
-            </h3>
-          </a>
-          <p>{{publication.detail}}</p>
-        </div>
-      </mat-card-header>
-      <div class="picsum-img-wrapper">
-        <!-- <img [src]="images[0]" alt="Random first slide" /> -->
-        <a [href]="publication.link" target="_blank">
-          <img [src]="publication.img" class="publication-image" [alt]="publication.heading" />
-        </a>
-      </div>
-    </mat-card>
+    <a [href]="publication.link" target="_blank">
+      <mat-card appearance="raised" class="publication-card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>
+              <!-- <a [href]="publication.link" target="_blank"> -->
+              <h3> {{pi + 1}}: {{publication.title}} </h3>
+              <!-- </a> -->
+            </mat-card-title>
+            <mat-card-subtitle>
+              <p>{{publication.description}}</p>
+            </mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+        <img mat-card-image [src]="'./image/' + publication.image" class="publication-image"
+          [alt]="publication.image" />
+      </mat-card>
+    </a>
   </ng-template>
   }
 </ngb-carousel>

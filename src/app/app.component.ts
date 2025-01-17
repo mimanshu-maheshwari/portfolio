@@ -25,7 +25,6 @@ export class AppComponent {
   protected router = inject(Router);
   protected aboutMe$: Observable<AboutMe> = this.aboutService.getAboutMeDetails().pipe(
     tap((value) => {
-      console.log(value);
       if (!value.profiles?.length) {
         this.links = this.links.map((l) => {
           if (l.title.toLocaleLowerCase() === 'profiles') {
@@ -37,6 +36,14 @@ export class AppComponent {
       if (!value.publications?.length) {
         this.links = this.links.map((l) => {
           if (l.title.toLocaleLowerCase() === 'publications') {
+            l.hidden = true;
+          }
+          return l;
+        });
+      }
+      if (!value.projects?.length) {
+        this.links = this.links.map((l) => {
+          if (l.title.toLocaleLowerCase() === 'projects') {
             l.hidden = true;
           }
           return l;

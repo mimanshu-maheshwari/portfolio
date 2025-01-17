@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Publication } from '../../models/leetcode.model';
+import { Component, inject, OnInit } from '@angular/core';
+import { Publication } from '../../models/about-me.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-publications',
@@ -8,16 +9,11 @@ import { Publication } from '../../models/leetcode.model';
   templateUrl: './publications.component.html',
   styleUrl: './publications.component.scss',
 })
-export class PublicationsComponent {
+export class PublicationsComponent implements OnInit {
   publications!: Array<Publication>;
-  constructor() {
-    this.publications = [
-      {
-        heading: 'How to use Rust for AI',
-        link: 'https://medium.com/@mimanshumaheshwari/how-to-use-rust-for-ai-a-comprehensive-guide-4ba5a6db3eb6',
-        detail: 'A Comprehensive guide on implementing Gen AI with rust.',
-        img: 'image/medium_logo.jpg',
-      },
-    ];
+  private location: Location = inject(Location);
+  ngOnInit(): void {
+    const state = this.location.getState() as any;
+    this.publications = state.aboutMe.publications;
   }
 }

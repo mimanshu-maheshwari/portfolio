@@ -8,8 +8,10 @@ export interface AboutMe {
   whoamiChips: Array<string>;
   details: Array<Detail>;
   profiles?: Array<Profile>;
-  contact?: Array<ContactDetail>;
+  contact?: ContactDetail;
   publications?: Array<Publication>;
+  projects?: Array<Project>;
+  resume?: string;
 }
 export interface Detail {
   label: string;
@@ -43,5 +45,12 @@ export interface Publication {
   title: string;
   description?: string;
   link?: string;
+  image?: string;
+}
+
+export interface Project {
+  name: string;
+  link?: string;
+  description?: string;
   image?: string;
 }

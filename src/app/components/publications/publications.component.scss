@@ -1,12 +1,17 @@
-.publication-image {
-  height: 80vh;
-}
+a {
+  text-decoration: none;
+  color: var(--mat-sys-on-surface);
 
-.picsum-img-wrapper {
-  & a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .publication-card {
+    max-height: 80vh;
+
+    img {
+      overflow: hidden;
+      object-fit: cover;
+      margin: 1em;
+      border-radius: inherit;
+    }
 
   }
+
 }

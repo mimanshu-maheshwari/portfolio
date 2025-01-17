@@ -7,7 +7,6 @@ import { TypewriterService } from '../../services/typewriter.service';
 @Component({
   selector: 'app-about',
   standalone: false,
-
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
 })
@@ -37,18 +36,3 @@ export class AboutComponent implements OnInit, OnDestroy {
     this.unsubscribeAll$.next();
   }
 }
-
-// currentPhraseIndex: number = 0;
-// currentCharIndex: number = 0;
-// isDeleting: boolean = false;
-// typingSpeed: number = 100;
-// deletingSpeed: number = 50;
-// delayBetweenPhrases: number = 1000;
-// options = {
-//   strings: this.whoamiChips,
-//   typeSpeed: this.typingSpeed,
-//   backSpeed: this.deletingSpeed,
-//   showCursor: true,
-//   cursorChar: '|',
-//   loop: true,
-// };

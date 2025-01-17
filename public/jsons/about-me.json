@@ -95,5 +95,21 @@
     { "type": "instagram", "username": "mimanshumaheshwari" },
     { "type": "medium", "username": "@mimanshumaheshwari" },
     { "type": "github", "username": "mimanshu-maheshwari" }
-  ]
+  ],
+  "contacts": {
+    "numbers": ["+917018337286"],
+    "mails": [
+      { "type": "gmail", "mailId": "maheshwarimimanshu@gmail.com" },
+      { "type": "outlook", "mailId": "mimanshumaheshwari@gmail.com" }
+    ]
+  },
+  "publications": [
+    {
+      "title": "How to use Rust for AI",
+      "description": "A Comprehensive guide on implementing Gen AI with rust.",
+      "link": "https://medium.com/@mimanshumaheshwari/how-to-use-rust-for-ai-a-comprehensive-guide-4ba5a6db3eb6",
+      "image": "medium_logo.jpg"
+    }
+  ],
+  "resume": "resume.pdf"
 }
