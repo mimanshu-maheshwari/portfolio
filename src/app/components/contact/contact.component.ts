@@ -4,6 +4,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
   faAws,
+  fab,
   faChrome,
   faDiscord,
   faFreeCodeCamp,
@@ -18,7 +19,8 @@ import {
   faMicrosoft,
   faStackOverflow,
 } from '@fortawesome/free-brands-svg-icons';
-import { faContactBook, faContactCard } from '@fortawesome/free-regular-svg-icons';
+import { faContactCard, far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { AboutMe } from '../../models/about-me.model';
 import { TypewriterService } from '../../services/typewriter.service';
@@ -34,12 +36,15 @@ export class ContactComponent {
   private location: Location = inject(Location);
   private typewriterService = inject(TypewriterService);
   private destroyRef: DestroyRef = inject(DestroyRef);
+  private library: FaIconLibrary = inject(FaIconLibrary);
   whoami$!: Observable<string>;
 
-  constructor(library: FaIconLibrary) {
+  constructor() {
     const state = this.location.getState() as any;
     this.aboutMe = state.aboutMe;
-    library.addIcons(
+    console.log(this.aboutMe, state);
+    this.library.addIconPacks(fas, far, fab);
+    this.library.addIcons(
       faGithub,
       faMedium,
       faLinkedin,
