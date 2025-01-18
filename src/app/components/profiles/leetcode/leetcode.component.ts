@@ -17,7 +17,7 @@ import { LeetcodeService } from '../../../services/leetcode.service';
 })
 export class LeetcodeComponent implements OnInit {
   userData!: MatchedUser;
-  calendarData!: any;
+  calendarData!: string;
   stats!: SubmitStats;
   allQuestionsCount!: Array<QuestionsCount>;
   profile!: UserDataProfile;
@@ -32,10 +32,10 @@ export class LeetcodeComponent implements OnInit {
       this.recentSubmissions = data.recentSubmissionList;
       this.allQuestionsCount = data.allQuestionsCount;
       this.tagProblemCounts = this.userData.tagProblemCounts;
+      this.calendarData = this.userData.submissionCalendar;
 
       // modify
       this.stats = this.userData.submitStats;
-      this.calendarData = this.userData.submissionCalendar;
       this.profile = this.userData.profile;
     });
   }

@@ -24,7 +24,7 @@ export interface MatchedUser {
   upcomingBadges: Array<Badge>;
   activeBadge?: Badge;
   submitStats: SubmitStats;
-  submissionCalendar: { [key: string]: number };
+  submissionCalendar: string;
   tagProblemCounts: TagProblemCounts;
 }
 

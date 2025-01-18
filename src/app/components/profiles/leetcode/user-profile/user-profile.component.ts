@@ -8,6 +8,20 @@ import { TagProblemCounts, UserDataProfile } from '../../../../models/leetcode.m
   styleUrl: './user-profile.component.scss',
 })
 export class UserProfileComponent {
+  protected calendarData!: Array<{ date: Date; count: number }>;
   @Input() profile!: UserDataProfile;
   @Input() tagProblemCounts!: TagProblemCounts;
+  @Input() set submissionCalendar(value: string) {
+    let data = [];
+    if (value) {
+      let parsed = JSON.parse(value);
+      for (let keyStr in parsed) {
+        let key = Number(keyStr);
+        let value = parsed[key];
+        data.push({ date: new Date(key * 1000), count: value });
+      }
+      console.log(data);
+      this.calendarData = data;
+    }
+  }
 }
