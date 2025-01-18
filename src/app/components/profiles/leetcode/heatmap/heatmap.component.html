@@ -1,5 +1,9 @@
 <div class="heatmap-container">
-  <mat-card appearance="outlined">
+  <mat-card
+    [style.display]="loaded ? 'block' : 'none'"
+    appearance="outlined"
+    class="heatmap-card"
+  >
     <mat-card-content>
       <div [id]="selectorId"></div>
     </mat-card-content>
