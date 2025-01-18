@@ -22,8 +22,9 @@ export class HeatmapComponent implements OnChanges {
   private elementRef: ElementRef = inject(ElementRef);
   private themeService: ThemeService = inject(ThemeService);
 
-  width = 928; // width of the chart
-  cellSize = 17; // height of a day
+  width = 1100; // width of the chart
+  cellSize = 20; // height of a day
+  margin = 2.0;
   height = this.cellSize * 9; // height of a week (5 days + padding)
 
   // Define formatting functions for the axes and tooltips.
@@ -77,16 +78,23 @@ export class HeatmapComponent implements OnChanges {
       .join('g')
       .attr(
         'transform',
-        (d, i) => `translate(40.5,${this.height * i + this.cellSize * 1.5})`,
+        (d, i) =>
+          `translate(40.5,${
+            this.height * (years.length - i - 1) + this.cellSize * 1.5
+          })`,
       );
+    // .attr(
+    //   'transform',
+    //   (d, i) => `translate(40.5,${this.height * i + this.cellSize * 1.5})`,
+    // );
 
     year
       .append('text')
+      .attr('fill', 'var(--mat-sys-on-surface)')
       .attr('x', -5)
       .attr('y', -5)
       .attr('font-weight', 'bold')
       .attr('text-anchor', 'end')
-      .attr('color', 'var(--mat-sys-on-surface)')
       .text(([key]) => key);
 
     year
@@ -95,7 +103,7 @@ export class HeatmapComponent implements OnChanges {
       .selectAll()
       .data(d3.range(0, 7))
       .join('text')
-      .attr('color', 'var(--mat-sys-on-surface)')
+      .attr('fill', 'var(--mat-sys-on-surface)')
       .attr('x', -5)
       .attr('y', (i) => (this.countDay(i) + 0.5) * this.cellSize)
       .attr('dy', '0.31em')
@@ -109,15 +117,26 @@ export class HeatmapComponent implements OnChanges {
         // values.filter((d) => ![0, 6].includes(d.date.getUTCDay())),
       )
       .join('rect')
-      .attr('width', this.cellSize - 1)
-      .attr('height', this.cellSize - 1)
+      .attr('width', this.cellSize - this.margin) // Adjust the width to account for the margin
+      .attr('height', this.cellSize - this.margin) // Adjust the height to account for the margin
+      // .attr('width', this.cellSize - 1)
+      // .attr('height', this.cellSize - 1)
       .attr(
         'x',
         (d) =>
-          this.timeWeek.count(d3.utcYear(d.date), d.date) * this.cellSize + 0.5,
+          this.timeWeek.count(d3.utcYear(d.date), d.date) * this.cellSize +
+          this.margin / 2.0,
       )
-      .attr('y', (d) => this.countDay(d.date.getUTCDay()) * this.cellSize + 0.5)
-      .attr('fill', (d) => color(d.count))
+      .attr(
+        'y',
+        (d) =>
+          this.countDay(d.date.getUTCDay()) * this.cellSize + this.margin / 2.0,
+      )
+      // .attr('fill', (d) => color(d.count))
+      .attr('fill', (d) => (d.count === 0 ? '#444' : color(d.count))) // Default to dark grey if no count or color
+      .attr('stroke', '#ccc') // Light grey border color
+      .attr('rx', 4) // Apply border-radius
+      .attr('ry', 4) // Apply border-radius
       .append('title')
       .text((d) => `${this.formatDate(d.date)} | submissions: ${d.count}`);
 
@@ -136,13 +155,16 @@ export class HeatmapComponent implements OnChanges {
       .filter((d, i) => !!i)
       .append('path')
       .attr('fill', 'none')
-      .attr('stroke', '#fff')
+      // .attr('stroke', '#fff')
       .attr('stroke-width', 3)
+      .attr('stroke', '#ccc') // Light grey border color
+      .attr('rx', 4) // Apply border-radius
+      .attr('ry', 4)
       .attr('d', this.pathMonth);
 
     month
       .append('text')
-      .attr('color', 'var(--mat-sys-on-surface)')
+      .attr('fill', 'var(--mat-sys-on-surface)')
       .attr(
         'x',
         (d) =>
@@ -152,8 +174,6 @@ export class HeatmapComponent implements OnChanges {
       )
       .attr('y', -5)
       .text(this.formatMonth);
-    console.log(year);
-    console.log(month);
 
     return Object.assign(svg.node() || {}, { scales: { color } });
   }
@@ -165,7 +185,7 @@ export class HeatmapComponent implements OnChanges {
     return `${
       d === 0
         ? `M${w * this.cellSize},0`
-        : d === 5
+        : d === 7
         ? `M${(w + 1) * this.cellSize},0`
         : `M${(w + 1) * this.cellSize},0V${d * this.cellSize}H${
             w * this.cellSize
