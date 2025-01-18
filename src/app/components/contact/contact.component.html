@@ -17,8 +17,8 @@
     <mat-card-content>
       <div class="contect-content text-lg-center">
         Find me on &nbsp;
-        @if(aboutMe.profiles) {
-        @for (profile of aboutMe.profiles; track $index) {
+        @if(aboutMe.profiles; as profiles) {
+        @for (profile of profiles; track $index) {
         @if (profile.type === 'linkedin') {
         <a title="LinkedIn" [href]="'https://www.linkedin.com/in/' + profile.username" target="_blank">
           <fa-icon [icon]="['fab', 'linkedin']"></fa-icon>
@@ -58,8 +58,8 @@
         }
         }
         @if (aboutMe.contact; as contact) {
-        @if(contact.mails) {
-        @for (mail of contact.mails; track $index) {
+        @if(contact.mails; as mails) {
+        @for (mail of mails; track $index) {
         @if (mail.type?.toLowerCase() === 'gmail') {
         <a title="Gmail" [href]="'mailto:' + mail.mailId" target="_blank">
           <fa-icon [icon]="['fab', 'google']"></fa-icon>
