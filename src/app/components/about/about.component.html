@@ -5,24 +5,36 @@
       <mat-card class="name-card" appearance="outlined">
         <mat-card-header>
           <mat-card-title>
-            <span>{{aboutMe.firstName}}</span>
-            @if(aboutMe.middleName) {<span>&nbsp;{{aboutMe.middleName}}</span>}
-            <span>&nbsp;{{aboutMe.lastName}}</span>
+            <span>{{ aboutMe.firstName }}</span>
+            @if(aboutMe.middleName) {<span>&nbsp;{{ aboutMe.middleName }}</span
+            >}
+            <span>&nbsp;{{ aboutMe.lastName }}</span>
           </mat-card-title>
-          <mat-card-subtitle> {{aboutMe.designation}}</mat-card-subtitle>
+          <mat-card-subtitle> {{ aboutMe.designation }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="'./image/' + aboutMe.profileImage" [alt]="aboutMe.profileImage">
+        <img
+          mat-card-image
+          [src]="'./image/' + aboutMe.profileImage"
+          [alt]="aboutMe.profileImage"
+        />
       </mat-card>
     </div>
     <div class="col-lg-6 col-sm-12">
       <mat-card class="detail-card" appearance="outlined">
         <mat-card-header>
-          <div mat-card-avatar [ngStyle]="{'background-image': 'url(./image/' + aboutMe.avatarImage + ')'}"
-            class="name-header-image">
-          </div>
+          <div
+            mat-card-avatar
+            [ngStyle]="{
+              'background-image': 'url(./image/' + aboutMe.avatarImage + ')'
+            }"
+            class="name-header-image"
+          ></div>
           <mat-card-title><code>$ whoami</code></mat-card-title>
           <mat-card-subtitle>
-            <span>I'm &nbsp;</span><span class="dynamic-text">{{ whoami$ | async }}</span>
+            @if (aboutMe.whoamiChips) {
+            <span>I'm &nbsp;</span>
+            <span class="dynamic-text">{{ whoami$ | async }}</span>
+            }
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="detail-card-content">
@@ -30,23 +42,20 @@
             @for (detail of aboutMe.details; track $index) {
             <mat-expansion-panel>
               <mat-expansion-panel-header>
-                <mat-panel-title>{{detail.label}}</mat-panel-title>
+                <mat-panel-title>{{ detail.label }}</mat-panel-title>
                 <mat-panel-description>
-                  {{detail.description}}
+                  {{ detail.description }}
                 </mat-panel-description>
               </mat-expansion-panel-header>
-              @if (detail.details.length) {
-              @for (subDetail of detail.details; track $index) {
-              @if (isString(subDetail)) {
+              @if (detail.details.length) { @for (subDetail of detail.details;
+              track $index) { @if (isString(subDetail)) {
               <p>
-                {{subDetail}}
+                {{ subDetail }}
               </p>
               } @else {
-              <h6>{{subDetail.title}}</h6>
-              <p>{{subDetail.detail}}</p>
-              }
-              }
-              }
+              <h6>{{ subDetail.title }}</h6>
+              <p>{{ subDetail.detail }}</p>
+              } } }
             </mat-expansion-panel>
             }
           </mat-accordion>
@@ -54,14 +63,12 @@
         <mat-card-footer class="detail-card-footer">
           <mat-chip-set aria-label="Not Chihuahua traits">
             @for (chip of aboutMe.whoamiChips; track $index) {
-            <mat-chip>#{{chip | kebabcase}}</mat-chip>
+            <mat-chip>#{{ chip | kebabcase }}</mat-chip>
             }
           </mat-chip-set>
         </mat-card-footer>
       </mat-card>
     </div>
   </div>
-  } @else {
-  Nothing to know about Me!!!
-  }
+  } @else { Nothing to know about Me!!! }
 </div>

@@ -1,6 +1,12 @@
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Location } from '@angular/common';
-import { Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { AboutMe } from '../../models/about-me.model';
 import { TypewriterService } from '../../services/typewriter.service';
@@ -18,12 +24,15 @@ export class AboutComponent {
   private typewriterService = inject(TypewriterService);
   private location: Location = inject(Location);
   private destroyRef: DestroyRef = inject(DestroyRef);
+
   constructor() {
     const state = this.location.getState() as any;
     this.aboutMe = state.aboutMe;
-    this.whoami$ = this.typewriterService
-      .getTypewriterEffect(this.aboutMe.whoamiChips)
-      .pipe(takeUntilDestroyed(this.destroyRef));
+    if (this.aboutMe?.whoamiChips) {
+      this.whoami$ = this.typewriterService
+        .getTypewriterEffect(this.aboutMe.whoamiChips)
+        .pipe(takeUntilDestroyed(this.destroyRef));
+    }
   }
 
   isString(value: any) {
