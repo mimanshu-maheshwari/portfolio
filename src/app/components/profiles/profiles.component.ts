@@ -11,11 +11,15 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './profiles.component.scss',
 })
 export class ProfilesComponent {
-  leetcodeAvatar = './image/leetcode.png';
-  aboutMe!: AboutMe;
-  leetcodeProfile?: Profile;
   private aboutService: AboutService = inject(AboutService);
   private destroyRef: DestroyRef = inject(DestroyRef);
+
+  aboutMe!: AboutMe;
+
+  leetcodeAvatar = './image/leetcode.png';
+  leetcodeProfile?: Profile;
+
+  githubProfile?: Profile;
 
   constructor() {
     this.aboutService.aboutMe$
@@ -28,6 +32,9 @@ export class ProfilesComponent {
           this.aboutMe = val;
           this.leetcodeProfile = this.aboutMe.profiles?.find(
             (p) => p.type === ProfileType.LEETCODE,
+          );
+          this.githubProfile = this.aboutMe.profiles?.find(
+            (p) => p.type === ProfileType.GITHUB,
           );
         },
       });

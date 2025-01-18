@@ -18,4 +18,24 @@
     <app-leetcode [username]="leetcodeProfile.username" style="width: 100%" />
   </mat-card-content>
 </mat-card>
+} @if (githubProfile && false) {
+<mat-card appearance="raised" class="github-card">
+  <mat-card-header class="github-card-header">
+    <!-- <div
+      mat-card-avatar
+      [ngStyle]="{
+        'background-image': 'url(' + leetcodeAvatar + ')',
+        'margin-bottom': '0.5em',
+        transform: 'scale(0.7)'
+      }"
+      class="name-header-image"
+    ></div> -->
+    <mat-card-title>
+      <p style="font-size: xx-large">GitHub</p>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="github-card-content">
+    <!-- <app-leetcode [username]="leetcodeProfile.username" style="width: 100%" /> -->
+  </mat-card-content>
+</mat-card>
 }
