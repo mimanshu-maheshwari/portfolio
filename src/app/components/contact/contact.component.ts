@@ -24,6 +24,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { AboutMe } from '../../models/about-me.model';
 import { TypewriterService } from '../../services/typewriter.service';
+import { AboutService } from '../../services/about.service';
 
 @Component({
   selector: 'app-contact',
@@ -33,16 +34,26 @@ import { TypewriterService } from '../../services/typewriter.service';
 })
 export class ContactComponent {
   protected aboutMe!: AboutMe;
-  private location: Location = inject(Location);
   private typewriterService = inject(TypewriterService);
   private destroyRef: DestroyRef = inject(DestroyRef);
   private library: FaIconLibrary = inject(FaIconLibrary);
+  private aboutService: AboutService = inject(AboutService);
   whoami$!: Observable<string>;
 
   constructor() {
-    const state = this.location.getState() as any;
-    this.aboutMe = state.aboutMe;
-    console.log(this.aboutMe, state);
+    this.aboutService.aboutMe$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (val) => {
+          if (!val) {
+            return;
+          }
+          this.aboutMe = val;
+          this.whoami$ = this.typewriterService
+            .getTypewriterEffect(this.aboutMe.whoamiChips)
+            .pipe(takeUntilDestroyed(this.destroyRef));
+        },
+      });
     this.library.addIconPacks(fas, far, fab);
     this.library.addIcons(
       faGithub,
@@ -61,8 +72,5 @@ export class ContactComponent {
       faHackerrank,
       faFreeCodeCamp,
     );
-    this.whoami$ = this.typewriterService
-      .getTypewriterEffect(this.aboutMe.whoamiChips)
-      .pipe(takeUntilDestroyed(this.destroyRef));
   }
 }

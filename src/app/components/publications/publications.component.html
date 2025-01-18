@@ -1,4 +1,4 @@
-@if (publications.length) {
+@if (publications && publications.length) {
 <ngb-carousel>
   @for (publication of publications; track $index; let pi = $index;) {
   <ng-template ngbSlide>
@@ -8,16 +8,20 @@
           <mat-card-title-group>
             <mat-card-title>
               <!-- <a [href]="publication.link" target="_blank"> -->
-              <h3> {{pi + 1}}: {{publication.title}} </h3>
+              <h3>{{ pi + 1 }}: {{ publication.title }}</h3>
               <!-- </a> -->
             </mat-card-title>
             <mat-card-subtitle>
-              <p>{{publication.description}}</p>
+              <p>{{ publication.description }}</p>
             </mat-card-subtitle>
           </mat-card-title-group>
         </mat-card-header>
-        <img mat-card-image [src]="'./image/' + publication.image" class="publication-image"
-          [alt]="publication.image" />
+        <img
+          mat-card-image
+          [src]="'./image/' + publication.image"
+          class="publication-image"
+          [alt]="publication.image"
+        />
       </mat-card>
     </a>
   </ng-template>

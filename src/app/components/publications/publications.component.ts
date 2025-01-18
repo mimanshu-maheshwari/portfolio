@@ -1,6 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { Publication } from '../../models/about-me.model';
-import { Location } from '@angular/common';
+import { AboutService } from '../../services/about.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-publications',
@@ -11,9 +12,17 @@ import { Location } from '@angular/common';
 })
 export class PublicationsComponent implements OnInit {
   publications!: Array<Publication>;
-  private location: Location = inject(Location);
+  private aboutService: AboutService = inject(AboutService);
+  private destroyRef: DestroyRef = inject(DestroyRef);
   ngOnInit(): void {
-    const state = this.location.getState() as any;
-    this.publications = state.aboutMe.publications;
+    this.aboutService.aboutMe$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (val) => {
+          if (val?.publications) {
+            this.publications = val.publications;
+          }
+        },
+      });
   }
 }
