@@ -3,6 +3,7 @@
 
 /* Importing Bootstrap SCSS file. */
 @forward 'bootstrap/scss/bootstrap';
+@forward 'styles/cal-heatmap';
 
 html {
   color-scheme: light dark;
