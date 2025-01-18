@@ -182,3 +182,8 @@ export interface TrendingDiscussionObject {
     }>;
   };
 }
+
+export interface HeatMapDataNode {
+  date: Date;
+  count: number;
+}

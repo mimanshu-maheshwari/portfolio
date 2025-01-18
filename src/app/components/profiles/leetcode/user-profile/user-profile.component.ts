@@ -1,5 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { TagProblemCounts, UserDataProfile } from '../../../../models/leetcode.model';
+import {
+  HeatMapDataNode,
+  TagProblemCounts,
+  UserDataProfile,
+} from '../../../../models/leetcode.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,7 +12,7 @@ import { TagProblemCounts, UserDataProfile } from '../../../../models/leetcode.m
   styleUrl: './user-profile.component.scss',
 })
 export class UserProfileComponent {
-  protected calendarData!: Array<{ date: Date; count: number }>;
+  protected calendarData!: Array<HeatMapDataNode>;
   @Input() profile!: UserDataProfile;
   @Input() tagProblemCounts!: TagProblemCounts;
   @Input() set submissionCalendar(value: string) {
