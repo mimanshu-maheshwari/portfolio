@@ -157,7 +157,7 @@ export class HeatmapComponent implements OnChanges {
       .attr('fill', 'none')
       // .attr('stroke', '#fff')
       .attr('stroke-width', 3)
-      .attr('stroke', '#ccc') // Light grey border color
+      .attr('stroke', 'var(--mat-sys-on-surface)') // Light grey border color
       .attr('rx', 4) // Apply border-radius
       .attr('ry', 4)
       .attr('d', this.pathMonth);
@@ -222,8 +222,13 @@ export class HeatmapComponent implements OnChanges {
         const existing = dateMap.get(date.toISOString());
         allDates.push(existing || { date, count: 0 });
       });
+      allDates.push(
+        dateMap.get(lastDayOfYear.toISOString()) || {
+          date: lastDayOfYear,
+          count: 0,
+        },
+      );
     }
-
     return allDates;
   }
 }
