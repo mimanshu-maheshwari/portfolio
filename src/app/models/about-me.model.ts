@@ -40,7 +40,7 @@ export interface Profile {
 
 export interface ContactDetail {
   numbers: Array<string>;
-  mails: Array<{ type?: 'gmail' | 'outlook' | 'hotmail'; mailId: string }>;
+  mails: Array<{ type?: 'gmail' | 'outlook' | 'hotmail' | 'other'; mailId: string }>;
 }
 export interface Publication {
   title: string;
