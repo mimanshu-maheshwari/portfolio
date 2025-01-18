@@ -36,7 +36,7 @@ export class HeatmapComponent implements OnChanges {
 
   // Helpers to compute a day’s position in the week.
   timeWeek = d3.utcMonday;
-  countDay = (i: number) => (i + 7) % 7;
+  countDay = (i: number) => (i + 6) % 7;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.submissionCalendar?.length) {
