@@ -91,11 +91,11 @@
     }
   ],
   "profiles": [
-    { "type": "leetcode", "username": "mimanshu-maheshwari" },
-    { "type": "instagram", "username": "mimanshumaheshwari" },
-    { "type": "medium", "username": "@mimanshumaheshwari" },
     { "type": "github", "username": "mimanshu-maheshwari" },
-    { "type": "discord", "username": "avidvivarta" }
+    { "type": "instagram", "username": "mimanshumaheshwari" },
+    { "type": "discord", "username": "avidvivarta" },
+    { "type": "medium", "username": "@mimanshumaheshwari" },
+    { "type": "leetcode", "username": "mimanshu-maheshwari" }
   ],
   "contacts": {
     "numbers": ["+917018337286"],
