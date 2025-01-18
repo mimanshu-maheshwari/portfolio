@@ -98,11 +98,7 @@
     { "type": "leetcode", "username": "mimanshu-maheshwari" }
   ],
   "contact": {
-    "numbers": ["+917018337286"],
-    "mails": [
-      { "type": "gmail", "mailId": "maheshwarimimanshu@gmail.com" },
-      { "type": "outlook", "mailId": "mimanshumaheshwari@gmail.com" }
-    ]
+    "mails": [{ "type": "gmail", "mailId": "maheshwarimimanshu@gmail.com" }]
   },
   "publications": [
     {
