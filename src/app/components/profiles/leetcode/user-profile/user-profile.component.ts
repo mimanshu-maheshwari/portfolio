@@ -24,7 +24,6 @@ export class UserProfileComponent {
         let value = parsed[key];
         data.push({ date: new Date(key * 1000), count: value });
       }
-      console.log(data);
       this.calendarData = data;
     }
   }

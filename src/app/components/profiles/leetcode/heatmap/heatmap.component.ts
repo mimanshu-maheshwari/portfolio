@@ -3,6 +3,8 @@ import {
   Component,
   ElementRef,
   Input,
+  OnChanges,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import * as d3 from 'd3';
@@ -14,7 +16,7 @@ import { HeatMapDataNode } from '../../../../models/leetcode.model';
   templateUrl: './heatmap.component.html',
   styleUrl: './heatmap.component.scss',
 })
-export class HeatmapComponent implements AfterViewInit {
+export class HeatmapComponent implements OnChanges {
   @ViewChild('heatmapContainer', { static: true })
   heatmapContainer!: ElementRef;
   @Input() submissionCalendar!: Array<HeatMapDataNode>;
@@ -35,8 +37,8 @@ export class HeatmapComponent implements AfterViewInit {
   timeWeek = d3.utcMonday;
   countDay = (i: number) => (i + 6) % 7;
 
-  ngAfterViewInit(): void {
-    if (this.submissionCalendar.length) {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.submissionCalendar?.length) {
       this.createChart(this.submissionCalendar);
     }
   }
@@ -52,6 +54,7 @@ export class HeatmapComponent implements AfterViewInit {
     // const min = Math.min(...data.map((d) => d.count));
     // const color = d3.scaleSequential(d3.interpolatePiYG).domain([min, max]);
     const svg = d3.select(`#${this.selectorId}`);
+    console.log(svg);
     svg
       .select('rect')
       .data(data)
