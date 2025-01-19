@@ -16,7 +16,6 @@ export class AboutService {
   public getAboutMeDetails(): Observable<AboutMe> {
     return this.http.get<AboutMe>('./jsons/about-me.json').pipe(
       tap((value) => {
-        console.log(value);
         this.aboutMe$.next(value);
       }),
     );

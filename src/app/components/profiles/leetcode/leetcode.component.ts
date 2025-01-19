@@ -6,7 +6,7 @@ import {
   SubmitStats,
   TagProblemCounts,
   UserDataProfile,
-} from '../../../models/leetcode.model';
+} from '../../../models/leetcode/leetcode.model';
 import { LeetcodeService } from '../../../services/leetcode.service';
 
 @Component({

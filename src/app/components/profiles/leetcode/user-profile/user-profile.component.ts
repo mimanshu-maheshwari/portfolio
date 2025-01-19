@@ -3,7 +3,7 @@ import {
   HeatMapDataNode,
   TagProblemCounts,
   UserDataProfile,
-} from '../../../../models/leetcode.model';
+} from '../../../../models/leetcode/leetcode.model';
 
 @Component({
   selector: 'app-user-profile',

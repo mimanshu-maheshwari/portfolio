@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs';
-import { CONTEST } from '../models/graphql-queries/contest.gql';
-import { DAILY_PROBLEM } from '../models/graphql-queries/daily-problem.gql';
-import { LANGUAGE_STATS } from '../models/graphql-queries/language-stats.gql';
-import { GET_PROFILE } from '../models/graphql-queries/leetcode-profile.gql';
-import { UserData } from '../models/leetcode.model';
+import { CONTEST } from '../models/leetcode/graphql-queries/contest.gql';
+import { DAILY_PROBLEM } from '../models/leetcode/graphql-queries/daily-problem.gql';
+import { LANGUAGE_STATS } from '../models/leetcode/graphql-queries/language-stats.gql';
+import { GET_PROFILE } from '../models/leetcode/graphql-queries/leetcode-profile.gql';
+import { UserData } from '../models/leetcode/leetcode.model';
 import { ApolloQueryResult } from '@apollo/client/core';
 
 @Injectable({

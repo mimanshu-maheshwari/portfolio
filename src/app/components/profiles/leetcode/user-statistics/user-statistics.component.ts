@@ -1,5 +1,16 @@
-import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { Difficulty, QuestionsCount, SubmitStats } from '../../../../models/leetcode.model';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
+import {
+  Difficulty,
+  QuestionsCount,
+  SubmitStats,
+} from '../../../../models/leetcode/leetcode.model';
 
 @Component({
   selector: 'app-user-statistics',
@@ -22,9 +33,12 @@ export class UserStatisticsComponent {
       };
     }
     const totalCount =
-      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.ALL)?.count || 0;
+      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.ALL)
+        ?.count || 0;
     const userCount =
-      this.stats.acSubmissionNum.find((sub) => sub.difficulty === Difficulty.ALL)?.count || 0;
+      this.stats.acSubmissionNum.find(
+        (sub) => sub.difficulty === Difficulty.ALL,
+      )?.count || 0;
     return {
       labels: ['Solved', 'Remaining'],
       datasets: [{ data: [userCount, totalCount - userCount] }],
@@ -39,9 +53,12 @@ export class UserStatisticsComponent {
       };
     }
     const totalCount =
-      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.HARD)?.count || 0;
+      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.HARD)
+        ?.count || 0;
     const userCount =
-      this.stats.acSubmissionNum.find((sub) => sub.difficulty === Difficulty.HARD)?.count || 0;
+      this.stats.acSubmissionNum.find(
+        (sub) => sub.difficulty === Difficulty.HARD,
+      )?.count || 0;
     return {
       labels: ['Solved', 'Remaining'],
       datasets: [{ data: [userCount, totalCount - userCount] }],
@@ -56,9 +73,12 @@ export class UserStatisticsComponent {
       };
     }
     const totalCount =
-      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.MEDIUM)?.count || 0;
+      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.MEDIUM)
+        ?.count || 0;
     const userCount =
-      this.stats.acSubmissionNum.find((sub) => sub.difficulty === Difficulty.MEDIUM)?.count || 0;
+      this.stats.acSubmissionNum.find(
+        (sub) => sub.difficulty === Difficulty.MEDIUM,
+      )?.count || 0;
     return {
       labels: ['Solved', 'Remaining'],
       datasets: [{ data: [userCount, totalCount - userCount] }],
@@ -73,9 +93,12 @@ export class UserStatisticsComponent {
       };
     }
     const totalCount =
-      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.EASY)?.count || 0;
+      this.allQuestionsCount.find((qc) => qc.difficulty === Difficulty.EASY)
+        ?.count || 0;
     const userCount =
-      this.stats.acSubmissionNum.find((sub) => sub.difficulty === Difficulty.EASY)?.count || 0;
+      this.stats.acSubmissionNum.find(
+        (sub) => sub.difficulty === Difficulty.EASY,
+      )?.count || 0;
     return {
       labels: ['Solved', 'Remaining'],
       datasets: [{ data: [userCount, totalCount - userCount] }],

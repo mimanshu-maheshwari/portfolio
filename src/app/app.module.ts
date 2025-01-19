@@ -1,6 +1,10 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { PlatformModule } from '@angular/cdk/platform';
-import { APP_BASE_HREF, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {
+  APP_BASE_HREF,
+  LocationStrategy,
+  PathLocationStrategy,
+} from '@angular/common';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
   CUSTOM_ELEMENTS_SCHEMA,
@@ -9,7 +13,11 @@ import {
   provideZoneChangeDetection,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+  withEventReplay,
+} from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { InMemoryCache } from '@apollo/client/cache';
@@ -19,7 +27,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideApollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
-import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
+import {
+  BaseChartDirective,
+  provideCharts,
+  withDefaultRegisterables,
+} from 'ng2-charts';
 import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,6 +56,10 @@ import { SnakecasePipe } from './pipes/snakecase.pipe';
 import { AboutService } from './services/about.service';
 import { ThemeService } from './services/theme.service';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { LeetcodeService } from './services/leetcode.service';
+import { GithubService } from './services/github.service';
+import { GithubComponent } from './components/profiles/github/github.component';
+import { GitUserProfileComponent } from './components/profiles/github/git-user-profile/git-user-profile.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +82,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     DoughnutChartComponent,
     PieChartComponent,
     SafeUrlPipe,
+    GithubComponent,
+    GitUserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,7 +114,10 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
         },
       }));
       return {
-        link: ApolloLink.from([basic, httpLink.create({ uri: environment.leetcodeUrl })]),
+        link: ApolloLink.from([
+          basic,
+          httpLink.create({ uri: environment.leetcodeUrl }),
+        ]),
         cache: new InMemoryCache(),
       };
     }),
@@ -104,6 +125,8 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     ThemeService,
     AboutService,
+    LeetcodeService,
+    GithubService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

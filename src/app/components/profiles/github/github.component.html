@@ -1,0 +1,7 @@
+@if (userDetails) {
+<app-git-user-profile
+  [userAvatar]="userDetails.avatar_url"
+  [name]="userDetails.name"
+  [userName]="userDetails.login"
+/>
+}
