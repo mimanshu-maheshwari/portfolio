@@ -1,27 +1,28 @@
-@if (leetcodeProfile) {
-<mat-card appearance="raised" class="leetcode-card">
-  <mat-card-header class="leetcode-card-header">
-    <div
-      mat-card-avatar
-      [ngStyle]="{
-        'background-image': 'url(' + leetcodeAvatar + ')',
-        'margin-bottom': '0.5em',
-        transform: 'scale(0.7)'
-      }"
-      class="name-header-image"
-    ></div>
-    <mat-card-title>
-      <p style="font-size: xx-large">LeetCode</p>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="leetcode-card-content">
-    <app-leetcode [username]="leetcodeProfile.username" style="width: 100%" />
-  </mat-card-content>
-</mat-card>
-} @if (githubProfile) {
-<mat-card appearance="raised" class="github-card">
-  <mat-card-header class="github-card-header">
-    <!-- <div
+<div class="d-flex flex-column gap-2">
+  @if (leetcodeProfile) {
+  <mat-card appearance="raised" class="leetcode-card">
+    <mat-card-header class="leetcode-card-header">
+      <div
+        mat-card-avatar
+        [ngStyle]="{
+          'background-image': 'url(' + leetcodeAvatar + ')',
+          'margin-bottom': '0.5em',
+          transform: 'scale(0.7)'
+        }"
+        class="name-header-image"
+      ></div>
+      <mat-card-title>
+        <p style="font-size: xx-large">LeetCode</p>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="leetcode-card-content">
+      <app-leetcode [username]="leetcodeProfile.username" style="width: 100%" />
+    </mat-card-content>
+  </mat-card>
+  } @if (githubProfile) {
+  <mat-card appearance="raised" class="github-card">
+    <mat-card-header class="github-card-header">
+      <!-- <div
       mat-card-avatar
       [ngStyle]="{
         'background-image': 'url(' + leetcodeAvatar + ')',
@@ -30,13 +31,14 @@
       }"
       class="name-header-image"
     ></div> -->
-    <mat-card-title>
-      <p style="font-size: xx-large">GitHub</p>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content class="github-card-content">
-    <app-github [username]="githubProfile.username" />
-    <!-- <app-leetcode [username]="leetcodeProfile.username" style="width: 100%" /> -->
-  </mat-card-content>
-</mat-card>
-}
+      <mat-card-title>
+        <p style="font-size: xx-large">GitHub</p>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="github-card-content">
+      <app-github [username]="githubProfile.username" />
+      <!-- <app-leetcode [username]="leetcodeProfile.username" style="width: 100%" /> -->
+    </mat-card-content>
+  </mat-card>
+  }
+</div>
