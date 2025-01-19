@@ -9,6 +9,11 @@
   height: 100px;
 }
 
+.submission-card {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
 a {
   color: var(--mdc-chip-label-text-color, var(--mat-sys-on-surface-variant));
   text-decoration: none;
@@ -16,4 +21,9 @@ a {
   &:hover {
     cursor: pointer;
   }
+}
+
+.repo-cards {
+  max-height: 25em;
+  overflow: auto;
 }

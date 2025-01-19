@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { GitRepos } from '../../../../models/github/git-user.model';
 
 @Component({
   selector: 'app-git-user-profile',
@@ -11,4 +12,5 @@ export class GitUserProfileComponent {
   @Input() userAvatar!: string;
   @Input() userName!: string;
   @Input() name!: string;
+  @Input() userRepos!: Array<GitRepos>;
 }

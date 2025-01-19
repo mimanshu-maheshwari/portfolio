@@ -11,5 +11,28 @@
         }
       </div>
     </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-6 repo-cards">
+      @for (repo of userRepos; track $index; let repoi = $index;) { @if
+      (!repo.private && !repo.fork) {
+      <mat-card appearance="outlined" class="submission-card">
+        <mat-card-content>{{ repo.name }}</mat-card-content>
+        <mat-card-footer style="padding: 1em">
+          <mat-chip-set aria-label="Not Chihuahua traits">
+            @if (repo.language) {
+            <mat-chip>{{ repo.language }}</mat-chip>
+            }
+            <mat-chip>Created At: {{ repo.created_at | date }}</mat-chip>
+            <mat-chip>Updated At: {{ repo.updated_at | date }}</mat-chip>
+            <mat-chip>
+              <a [href]="repo.html_url" target="_blank">
+                <mat-icon>open_in_new</mat-icon>
+              </a>
+            </mat-chip>
+          </mat-chip-set>
+        </mat-card-footer>
+      </mat-card>
+      } }
+    </div>
   </div>
 </div>
