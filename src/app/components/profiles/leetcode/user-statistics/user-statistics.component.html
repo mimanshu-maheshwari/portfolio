@@ -1,54 +1,74 @@
 @if (stats && allQuestionsCount.length) {
 <div class="container-fluid">
   <div class="row">
-
-    <mat-card class="col justify-content-center">
+    <mat-card class="col-md-6 col-sm-12 col-lg-6 justify-content-center">
       <mat-card-content class="label-wrapper">
-        <mat-card class="label-card green" style="border-color: green;" (mouseover)="updateSelected(labels[1])"
-          (mouseout)="updateSelected(labels[0])" [appearance]="selectedDifficulty === 'Easy'? 'raised': 'outlined'">
+        <mat-card
+          class="label-card green"
+          style="border-color: green"
+          (mouseover)="updateSelected(labels[1])"
+          (mouseout)="updateSelected(labels[0])"
+          [appearance]="selectedDifficulty === 'Easy' ? 'raised' : 'outlined'"
+        >
           <mat-card-content>
             Easy
             <br />
-            {{easyQuestionsDataset.datasets[0].data[0]}} / {{ easyQuestionsDataset.datasets[0].data[0]+
-            easyQuestionsDataset.datasets[0].data[1]}}
+            {{ easyQuestionsDataset.datasets[0].data[0] }} /
+            {{
+              easyQuestionsDataset.datasets[0].data[0] +
+                easyQuestionsDataset.datasets[0].data[1]
+            }}
           </mat-card-content>
         </mat-card>
 
-        <mat-card class="label-card orange" style="border-color: orange;" (mouseover)="updateSelected(labels[2])"
-          (mouseout)="updateSelected(labels[0])" [appearance]="selectedDifficulty === 'Medium'? 'raised': 'outlined'">
+        <mat-card
+          class="label-card orange"
+          style="border-color: orange"
+          (mouseover)="updateSelected(labels[2])"
+          (mouseout)="updateSelected(labels[0])"
+          [appearance]="selectedDifficulty === 'Medium' ? 'raised' : 'outlined'"
+        >
           <mat-card-content>
             Medium
             <br />
-            {{mediumQuestionsDataset.datasets[0].data[0]}} / {{mediumQuestionsDataset.datasets[0].data[0] +
-            mediumQuestionsDataset.datasets[0].data[1]}}
+            {{ mediumQuestionsDataset.datasets[0].data[0] }} /
+            {{
+              mediumQuestionsDataset.datasets[0].data[0] +
+                mediumQuestionsDataset.datasets[0].data[1]
+            }}
           </mat-card-content>
         </mat-card>
 
-        <mat-card class="label-card red" style="border-color: red;" (mouseover)="updateSelected(labels[3])"
-          (mouseout)="updateSelected(labels[0])" [appearance]="selectedDifficulty === 'Hard'? 'raised': 'outlined'">
+        <mat-card
+          class="label-card red"
+          style="border-color: red"
+          (mouseover)="updateSelected(labels[3])"
+          (mouseout)="updateSelected(labels[0])"
+          [appearance]="selectedDifficulty === 'Hard' ? 'raised' : 'outlined'"
+        >
           <mat-card-content>
             Hard
             <br />
-            {{hardQuestionsDataset.datasets[0].data[0]}} / {{hardQuestionsDataset.datasets[0].data[0] +
-            hardQuestionsDataset.datasets[0].data[1]}}
+            {{ hardQuestionsDataset.datasets[0].data[0] }} /
+            {{
+              hardQuestionsDataset.datasets[0].data[0] +
+                hardQuestionsDataset.datasets[0].data[1]
+            }}
           </mat-card-content>
         </mat-card>
       </mat-card-content>
     </mat-card>
 
-    <mat-card class="col">
+    <mat-card class="col-md-6 col-sm-12 col-lg-6">
       <mat-card-content class="chart-wrapper">
         <div class="chart">
           @if (selectedDifficulty === 'All') {
           <app-pie-chart [pieChartData]="solvedQuestionCount" />
-          }
-          @if (selectedDifficulty === "Easy") {
+          } @if (selectedDifficulty === "Easy") {
           <app-doughnut-chart [doughnutChartData]="easyQuestionsDataset" />
-          }
-          @if (selectedDifficulty === "Medium") {
+          } @if (selectedDifficulty === "Medium") {
           <app-doughnut-chart [doughnutChartData]="mediumQuestionsDataset" />
-          }
-          @if (selectedDifficulty === "Hard") {
+          } @if (selectedDifficulty === "Hard") {
           <app-doughnut-chart [doughnutChartData]="hardQuestionsDataset" />
           }
         </div>

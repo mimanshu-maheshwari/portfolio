@@ -40,7 +40,6 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/navigation/header/header.component';
 import { SidenavListComponent } from './components/navigation/sidenav-list/sidenav-list.component';
-import { HeatmapComponent } from './components/profiles/leetcode/heatmap/heatmap.component';
 import { LeetcodeComponent } from './components/profiles/leetcode/leetcode.component';
 import { SubmissionsComponent } from './components/profiles/leetcode/submissions/submissions.component';
 import { UserProfileComponent } from './components/profiles/leetcode/user-profile/user-profile.component';
@@ -60,6 +59,7 @@ import { LeetcodeService } from './services/leetcode.service';
 import { GithubService } from './services/github.service';
 import { GithubComponent } from './components/profiles/github/github.component';
 import { GitUserProfileComponent } from './components/profiles/github/git-user-profile/git-user-profile.component';
+import { HeatmapComponent } from './components/shared/heatmap/heatmap.component';
 
 @NgModule({
   declarations: [

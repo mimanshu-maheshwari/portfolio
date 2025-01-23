@@ -7,8 +7,8 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import * as d3 from 'd3';
-import { HeatMapDataNode } from '../../../../models/leetcode/leetcode.model';
-import { ThemeService } from '../../../../services/theme.service';
+import { HeatMapDataNode } from '../../../models/leetcode/leetcode.model';
+import { ThemeService } from '../../../services/theme.service';
 @Component({
   selector: 'app-heatmap',
   standalone: false,
