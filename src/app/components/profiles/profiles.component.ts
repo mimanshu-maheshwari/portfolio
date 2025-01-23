@@ -17,6 +17,7 @@ export class ProfilesComponent {
   aboutMe!: AboutMe;
 
   leetcodeAvatar = './image/leetcode.png';
+  githubAvatar = './image/github.png';
   leetcodeProfile?: Profile;
 
   githubProfile?: Profile;

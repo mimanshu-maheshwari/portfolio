@@ -7,7 +7,8 @@
         [ngStyle]="{
           'background-image': 'url(' + leetcodeAvatar + ')',
           'margin-bottom': '0.5em',
-          transform: 'scale(0.7)'
+          'background-repeat': 'no-repeat',
+          'background-position': 'center',
         }"
         class="name-header-image"
       ></div>
@@ -22,15 +23,17 @@
   } @if (githubProfile) {
   <mat-card appearance="raised" class="github-card">
     <mat-card-header class="github-card-header">
-      <!-- <div
-      mat-card-avatar
-      [ngStyle]="{
-        'background-image': 'url(' + leetcodeAvatar + ')',
-        'margin-bottom': '0.5em',
-        transform: 'scale(0.7)'
-      }"
-      class="name-header-image"
-    ></div> -->
+      <div
+        mat-card-avatar
+        [ngStyle]="{
+          'background-image': 'url(' + githubAvatar + ')',
+          'margin-bottom': '0.5em',
+          'background-repeat': 'no-repeat',
+          'background-color': '#1e1a1d',
+          'background-position': 'center',
+        }"
+        class="name-header-image"
+      ></div>
       <mat-card-title>
         <p style="font-size: xx-large">GitHub</p>
       </mat-card-title>
