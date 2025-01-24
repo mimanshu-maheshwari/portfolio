@@ -1,5 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import {
+  HeatMapDataNode,
   MatchedUser,
   QuestionsCount,
   Submission,
@@ -18,7 +19,7 @@ import { LeetcodeService } from '../../../services/leetcode.service';
 export class LeetcodeComponent implements OnInit {
   @Input() username!: string;
   userData!: MatchedUser;
-  calendarData!: string;
+  calendarData!: Array<HeatMapDataNode>;
   stats!: SubmitStats;
   allQuestionsCount!: Array<QuestionsCount>;
   profile!: UserDataProfile;
@@ -30,14 +31,21 @@ export class LeetcodeComponent implements OnInit {
     this.leetcodeService
       .getProfile(this.username)
       .subscribe(({ data, loading }) => {
-        // done
         this.userData = data.matchedUser;
         this.recentSubmissions = data.recentSubmissionList;
         this.allQuestionsCount = data.allQuestionsCount;
         this.tagProblemCounts = this.userData.tagProblemCounts;
-        this.calendarData = this.userData.submissionCalendar;
-
-        // modify
+        const value = this.userData.submissionCalendar;
+        let subData = [];
+        if (value) {
+          let parsed = JSON.parse(value);
+          for (let keyStr in parsed) {
+            let key = Number(keyStr);
+            let value = parsed[key];
+            subData.push({ date: new Date(key * 1000), count: value });
+          }
+          this.calendarData = subData;
+        }
         this.stats = this.userData.submitStats;
         this.profile = this.userData.profile;
       });

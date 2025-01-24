@@ -1,17 +1,32 @@
 <mat-tab-group dynamicHeight class="w-100">
   <mat-tab label="Profile">
     <div class="">
-      <app-user-profile [profile]="profile" [tagProblemCounts]="tagProblemCounts" [submissionCalendar]="calendarData" />
+      <app-user-profile
+        [profile]="profile"
+        [tagProblemCounts]="tagProblemCounts"
+      />
     </div>
   </mat-tab>
   <mat-tab label="Stats">
     <div class="">
-      <app-user-statistics [stats]="stats" [allQuestionsCount]="allQuestionsCount" class="user-stats" />
+      <app-user-statistics
+        [stats]="stats"
+        [allQuestionsCount]="allQuestionsCount"
+        class="user-stats"
+      />
     </div>
   </mat-tab>
   <mat-tab label="Recent Submissions">
-    <div style="margin-top: 1em;">
-      <app-submissions [recent-submissions]="recentSubmissions" class="submissions" />
+    <div style="margin-top: 1em">
+      <app-submissions
+        [recent-submissions]="recentSubmissions"
+        class="submissions"
+      />
+    </div>
+  </mat-tab>
+  <mat-tab label="Submission Calendar">
+    <div class="row">
+      <app-heatmap [submissionCalendar]="calendarData" />
     </div>
   </mat-tab>
 </mat-tab-group>
