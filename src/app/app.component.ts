@@ -83,6 +83,10 @@ export class AppComponent {
   }
 
   onActivate(value: any) {
-    this.animationState = this.route.firstChild?.snapshot.data['routeIdx'];
+    const state = this.router.getCurrentNavigation()?.extras.state || {
+      routeIdx: 0,
+    };
+    this.animationState = state['routeIdx'];
+    // this.animationState = this.route.firstChild?.snapshot.data['routeIdx'];
   }
 }
