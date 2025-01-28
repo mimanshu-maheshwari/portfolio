@@ -1,15 +1,22 @@
 <mat-nav-list [activeId]="route.params | async">
-  @for (link of links; track $index; let i = $index) {
-  @if (!link.hidden) {
+  @for (link of links; track $index; let i = $index) { @if (!link.hidden) {
   <!-- [ngbNavItem]="link.link" ngbNavLink-->
 
-  <a mat-list-item [state]="{aboutMe}" [routerLinkActive]="'active'" [routerLink]="link.link"
-    (click)="onSidenavClose()">
+  <a
+    mat-list-item
+    [state]="{aboutMe, routeIdx: i}"
+    [routerLinkActive]="'active'"
+    [routerLink]="link.link"
+    (click)="onSidenavClose()"
+  >
     <div class="icon-text-wrapper">
-      <mat-icon aria-hidden="false" aria-label="icon" [fontIcon]="link.icon || ''" />
+      <mat-icon
+        aria-hidden="false"
+        aria-label="icon"
+        [fontIcon]="link.icon || ''"
+      />
       <span class="nav-caption">{{ link.title }}</span>
     </div>
   </a>
-  }
-  }
+  } }
 </mat-nav-list>

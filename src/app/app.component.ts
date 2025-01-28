@@ -1,6 +1,9 @@
+import { transition, trigger } from '@angular/animations';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+import { left } from './aminations/left.animation';
+import { right } from './aminations/right.animation';
 import { AboutMe } from './models/about-me.model';
 import { HeaderLink } from './models/header-link.model';
 import { AboutService } from './services/about.service';
@@ -10,6 +13,12 @@ import { AboutService } from './services/about.service';
   templateUrl: './app.component.html',
   standalone: false,
   styleUrl: './app.component.scss',
+  animations: [
+    trigger('animRoutes', [
+      transition(':increment', right),
+      transition(':decrement', left),
+    ]),
+  ],
 })
 export class AppComponent {
   links: Array<HeaderLink> = [
@@ -35,6 +44,7 @@ export class AppComponent {
     { title: 'Contact', link: './contact', fragment: '', icon: 'contact_page' },
   ];
 
+  protected animationState!: number;
   private aboutService = inject(AboutService);
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
@@ -70,5 +80,9 @@ export class AppComponent {
     );
   isMobile() {
     return false;
+  }
+
+  onActivate(value: any) {
+    this.animationState = this.route.firstChild?.snapshot.data['routeIdx'];
   }
 }

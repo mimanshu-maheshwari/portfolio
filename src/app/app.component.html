@@ -1,13 +1,26 @@
 @if (aboutMe$ | async; as aboutMe) {
 <mat-sidenav-container>
-  <mat-sidenav #sidenav role="navigation" [mode]="isMobile() ? 'over' : 'side'" [fixedInViewport]="isMobile()">
-    <app-sidenav-list [links]="links" [aboutMe]="aboutMe" (sidenav-close)="sidenav.close()" />
+  <mat-sidenav
+    #sidenav
+    role="navigation"
+    [mode]="isMobile() ? 'over' : 'side'"
+    [fixedInViewport]="isMobile()"
+  >
+    <app-sidenav-list
+      [links]="links"
+      [aboutMe]="aboutMe"
+      (sidenav-close)="sidenav.close()"
+    />
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <app-header [links]="links" [aboutMe]="aboutMe" (sidenav-toggle)="sidenav.toggle()" />
-    <main>
-      <router-outlet />
+    <app-header
+      [links]="links"
+      [aboutMe]="aboutMe"
+      (sidenav-toggle)="sidenav.toggle()"
+    />
+    <main [@animRoutes]="animationState">
+      <router-outlet (activate)="onActivate($event)" />
     </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

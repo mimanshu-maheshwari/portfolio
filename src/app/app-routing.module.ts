@@ -24,6 +24,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled',
+      enableViewTransitions: true,
     }),
   ],
   exports: [RouterModule],
