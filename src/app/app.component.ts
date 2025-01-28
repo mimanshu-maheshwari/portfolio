@@ -86,7 +86,7 @@ export class AppComponent {
     const state = this.router.getCurrentNavigation()?.extras.state || {
       routeIdx: 0,
     };
-    this.animationState = state['routeIdx'];
-    // this.animationState = this.route.firstChild?.snapshot.data['routeIdx'];
+    // this.animationState = state['routeIdx'];
+    this.animationState = this.route.firstChild?.snapshot.data['routeIdx'];
   }
 }
