@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { left } from './aminations/left.animation';
 import { right } from './aminations/right.animation';
-import { AboutMe } from './models/about-me.model';
+import { AboutMe, Profile, ProfileType } from './models/about-me.model';
 import { HeaderLink } from './models/header-link.model';
 import { AboutService } from './services/about.service';
 
@@ -52,7 +52,10 @@ export class AppComponent {
     .getAboutMeDetails()
     .pipe(
       tap((value) => {
-        if (!value.profiles?.length) {
+        if (
+          !value.profiles?.length ||
+          !this.hasGitAndLeetcodeProfile(value.profiles)
+        ) {
           this.links = this.links.map((l) => {
             if (l.title.toLocaleLowerCase() === 'profiles') {
               l.hidden = true;
@@ -88,5 +91,16 @@ export class AppComponent {
     };
     // this.animationState = state['routeIdx'];
     this.animationState = this.route.firstChild?.snapshot.data['routeIdx'];
+  }
+  hasGitAndLeetcodeProfile(profiles: Array<Profile>): boolean {
+    for (let profile of profiles) {
+      if (
+        profile.type === ProfileType.GITHUB ||
+        profile.type === ProfileType.LEETCODE
+      ) {
+        return true;
+      }
+    }
+    return false;
   }
 }
