@@ -48,10 +48,12 @@ export class AppComponent {
   private aboutService = inject(AboutService);
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
-  protected aboutMe$: Observable<AboutMe> = this.aboutService
-    .getAboutMeDetails()
-    .pipe(
+  protected aboutMe$: Observable<AboutMe | undefined> =
+    this.aboutService.aboutMe$.pipe(
       tap((value) => {
+        if (!value) {
+          return;
+        }
         if (
           !value.profiles?.length ||
           !this.hasGitAndLeetcodeProfile(value.profiles)

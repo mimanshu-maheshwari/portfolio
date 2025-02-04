@@ -10,6 +10,7 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   inject,
   NgModule,
+  provideAppInitializer,
   provideZoneChangeDetection,
 } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -60,19 +61,15 @@ import { GithubService } from './services/github.service';
 import { GithubComponent } from './components/profiles/github/github.component';
 import { GitUserProfileComponent } from './components/profiles/github/git-user-profile/git-user-profile.component';
 import { HeatmapComponent } from './components/shared/heatmap/heatmap.component';
-import { AboutMe } from './models/about-me.model';
+import { firstValueFrom } from 'rxjs';
 
-const profileData = async () => {
-  const response = await fetch('./jsons/about-me.json');
-  const body = await response.json();
-  return new Promise((resolve, reject) => {
-    if (body) {
-      // console.log(body);
-      return resolve(true);
-    } else {
-      reject(false);
-    }
-  });
+const initApp = async (aboutService: AboutService) => {
+  let profileData = await firstValueFrom(aboutService.getAboutMeDetails());
+  if (profileData) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 @NgModule({
@@ -119,6 +116,7 @@ const profileData = async () => {
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
     { provide: APP_BASE_HREF, useValue: '/portfolio' },
+    provideAppInitializer(() => initApp(inject(AboutService))),
     provideApollo(() => {
       const httpLink = inject(HttpLink);
 
@@ -145,10 +143,4 @@ const profileData = async () => {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor() {
-    profileData().then((_) => {
-      // console.log(value);
-    });
-  }
-}
+export class AppModule {}
