@@ -60,6 +60,20 @@ import { GithubService } from './services/github.service';
 import { GithubComponent } from './components/profiles/github/github.component';
 import { GitUserProfileComponent } from './components/profiles/github/git-user-profile/git-user-profile.component';
 import { HeatmapComponent } from './components/shared/heatmap/heatmap.component';
+import { AboutMe } from './models/about-me.model';
+
+const profileData = async () => {
+  const response = await fetch('./jsons/about-me.json');
+  const body = await response.json();
+  return new Promise((resolve, reject) => {
+    if (body) {
+      // console.log(body);
+      return resolve(true);
+    } else {
+      reject(false);
+    }
+  });
+};
 
 @NgModule({
   declarations: [
@@ -131,4 +145,10 @@ import { HeatmapComponent } from './components/shared/heatmap/heatmap.component'
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    profileData().then((_) => {
+      // console.log(value);
+    });
+  }
+}
