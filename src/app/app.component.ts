@@ -92,6 +92,7 @@ export class AppComponent {
     // this.animationState = state['routeIdx'];
     this.animationState = this.route.firstChild?.snapshot.data['routeIdx'];
   }
+
   hasGitAndLeetcodeProfile(profiles: Array<Profile>): boolean {
     for (let profile of profiles) {
       if (
