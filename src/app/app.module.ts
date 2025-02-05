@@ -131,7 +131,6 @@ const initApp = async (aboutService: AboutService) => {
     provideAppInitializer(() => initApp(inject(AboutService))),
     provideApollo(() => {
       const httpLink = inject(HttpLink);
-
       const basic = setContext((operation, context) => ({
         headers: {
           'Access-Control-Allow-Origin': '*',
