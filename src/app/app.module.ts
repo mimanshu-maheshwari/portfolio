@@ -62,15 +62,27 @@ import { GithubComponent } from './components/profiles/github/github.component';
 import { GitUserProfileComponent } from './components/profiles/github/git-user-profile/git-user-profile.component';
 import { HeatmapComponent } from './components/shared/heatmap/heatmap.component';
 import { firstValueFrom } from 'rxjs';
+import { ProfileType } from './models/about-me.model';
+
+var leetcodeUrl = environment.leetcodeUrl;
 
 const initApp = async (aboutService: AboutService) => {
   let profileData = await firstValueFrom(aboutService.getAboutMeDetails());
   if (profileData) {
+    profileData.profiles?.find(profile => {
+      if (profile.type === ProfileType.LEETCODE) {
+        const url = profile.extra?.['proxyServerUrl'];
+        if (url) {
+          leetcodeUrl = url;
+        }
+      }
+    })
     return true;
   } else {
     return false;
   }
 };
+
 
 @NgModule({
   declarations: [
@@ -128,7 +140,7 @@ const initApp = async (aboutService: AboutService) => {
       return {
         link: ApolloLink.from([
           basic,
-          httpLink.create({ uri: environment.leetcodeUrl }),
+          httpLink.create({ uri: leetcodeUrl }),
         ]),
         cache: new InMemoryCache(),
       };
@@ -143,4 +155,4 @@ const initApp = async (aboutService: AboutService) => {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

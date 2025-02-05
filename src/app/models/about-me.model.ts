@@ -36,6 +36,7 @@ export enum ProfileType {
 export interface Profile {
   type: ProfileType;
   username: string;
+  extra?: Record<string, any>;
 }
 
 export interface ContactDetail {
