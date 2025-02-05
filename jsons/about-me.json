@@ -91,14 +91,37 @@
     }
   ],
   "profiles": [
-    { "type": "github", "username": "mimanshu-maheshwari" },
-    { "type": "instagram", "username": "mimanshumaheshwari" },
-    { "type": "discord", "username": "avidvivarta" },
-    { "type": "medium", "username": "@mimanshumaheshwari" },
-    { "type": "leetcode", "username": "mimanshu-maheshwari" }
+    {
+      "type": "github",
+      "username": "mimanshu-maheshwari"
+    },
+    {
+      "type": "instagram",
+      "username": "mimanshumaheshwari"
+    },
+    {
+      "type": "discord",
+      "username": "avidvivarta"
+    },
+    {
+      "type": "medium",
+      "username": "@mimanshumaheshwari"
+    },
+    {
+      "type": "leetcode",
+      "username": "mimanshu-maheshwari",
+      "extras": {
+        "proxyServerUrl": "https://leetcode-proxy-server.vercel.app/leetcode"
+      }
+    }
   ],
   "contact": {
-    "mails": [{ "type": "gmail", "mailId": "maheshwarimimanshu@gmail.com" }]
+    "mails": [
+      {
+        "type": "gmail",
+        "mailId": "maheshwarimimanshu@gmail.com"
+      }
+    ]
   },
   "publications": [
     {
