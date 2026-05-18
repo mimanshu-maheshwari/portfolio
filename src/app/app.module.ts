@@ -56,6 +56,7 @@ import { SnakecasePipe } from './pipes/snakecase.pipe';
 import { AboutService } from './services/about.service';
 import { ThemeService } from './services/theme.service';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { SortbyPipe } from './pipes/sortby.pipe';
 import { LeetcodeService } from './services/leetcode.service';
 import { GithubService } from './services/github.service';
 import { GithubComponent } from './components/profiles/github/github.component';
@@ -105,6 +106,7 @@ const initApp = async (aboutService: AboutService) => {
     DoughnutChartComponent,
     PieChartComponent,
     SafeUrlPipe,
+    SortbyPipe,
     GithubComponent,
     GitUserProfileComponent,
   ],
