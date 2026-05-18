@@ -13,7 +13,7 @@
     </div>
 
     <div class="col-sm-12 col-md-6 col-lg-6 repo-cards">
-      @for (repo of userRepos; track $index; let repoi = $index;) { @if
+      @for (repo of userRepos | sortby: 'updated_at': 'desc'; track $index; let repoi = $index;) { @if
       (!repo.private && !repo.fork) {
       <mat-card appearance="outlined" class="submission-card">
         <mat-card-content>{{ repo.name }}</mat-card-content>
