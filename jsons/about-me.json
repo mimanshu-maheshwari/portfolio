@@ -22,7 +22,7 @@
     {
       "label": "About Me",
       "details": [
-        "I am a Full-Stack Developer with 4 years of hands-on experience in building scalable, efficient, and user-focused applications. My expertise spans a wide array of technologies, enabling me to design and deliver solutions that address both technical challenges and user needs. From crafting intuitive front-end interfaces to implementing robust back-end systems, I thrive in environments where innovation and collaboration are at the forefront."
+        "I am a Backend Engineer with 5+ years of experience designing and operating high-throughput distributed systems across enterprise and cloud-native environments. I specialize in real-time data streaming, microservices architecture, and backend reliability engineering — with deep hands-on expertise in Kafka, Flink, Spark, Kubernetes, and Java. I am passionate about building systems that are fast, fault-tolerant, and built to scale, while also exploring the frontier of Generative AI to drive smarter, more automated solutions. Whether it's optimizing a pricing engine serving millions of decisions a day or architecting streaming pipelines processing hundreds of gigabytes in real time, I thrive on solving complex infrastructure challenges with clean, pragmatic engineering."
       ]
     },
     {
